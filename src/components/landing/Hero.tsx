@@ -1,5 +1,4 @@
 import { Button } from '@heroui/react'
-import Link from 'next/link'
 
 export function Hero() {
   return (
@@ -10,14 +9,14 @@ export function Hero() {
           Sélectionnée à la pré-pépinière Technopole CACEM · Martinique, 2026
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          L&apos;app qui lit la mer<br />
-          <span className="text-[#2ed6b0]">avant toi</span>.
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          La plateforme référente pour<br />
+          <span className="text-[#2ed6b0]">la santé des plages</span> en temps réel
         </h1>
 
-        <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto">
-          Tiwave agrège en temps réel les données de houle, de sargasses et de qualité de l&apos;eau
-          pour toutes les plages de la Martinique. Pour que ton choix de plage soit toujours le bon.
+        <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+          Tiwave agrège des données open source, des signaux terrain et les ressentis
+          des usagers pour rendre la qualité des plages de Martinique plus lisible.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -27,21 +26,20 @@ export function Hero() {
             size="lg"
             className="bg-[#2ed6b0] text-[#013a63] font-semibold px-8"
           >
-            Être notifié à la sortie →
+            Rejoindre la liste d&apos;attente →
           </Button>
           <Button
             as="a"
-            href="#features"
+            href="#comment-ca-marche"
             size="lg"
             variant="bordered"
             className="border-white/40 text-white"
           >
-            En savoir plus sur les données ↓
+            Découvrir le projet ↓
           </Button>
         </div>
       </div>
 
-      {/* Wave decoration */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path

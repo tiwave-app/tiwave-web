@@ -1,59 +1,57 @@
-const features = [
+const steps = [
   {
-    icon: '🌊',
-    title: 'Houle, vent, UV, température',
-    text: 'Données Open-Meteo actualisées toutes les heures. Score de baignabilité calculé automatiquement pour chaque plage.',
+    number: '01',
+    icon: '🛰️',
+    title: 'Données open data',
+    text: 'Tiwave collecte automatiquement les données scientifiques et institutionnelles : imagerie satellite NOAA, météo marine Open-Meteo, analyses bactériologiques de l\'ARS Martinique.',
     accent: '#0093d0',
   },
   {
-    icon: '🟤',
-    title: 'Risque sargasses en temps réel',
-    text: 'Tiwave analyse les images satellite NOAA (AFAI) sur 7 jours pour évaluer le risque d\'échouage : faible, modéré, élevé, critique.',
-    accent: '#ff6d5a',
-  },
-  {
-    icon: '💧',
-    title: 'Eau conforme ou non ?',
-    text: 'Résultats des analyses bactériologiques de l\'ARS Martinique, classifiés selon la Directive Européenne Eaux de Baignade.',
+    number: '02',
+    icon: '📸',
+    title: 'Signalements & ressentis terrain',
+    text: 'Les usagers complètent la donnée satellite avec des photos, des signalements d\'algues, de méduses ou de pollution. La communauté voit ce que les capteurs ne voient pas.',
     accent: '#2ed6b0',
   },
   {
-    icon: '📸',
-    title: 'Ce que disent les autres baigneurs',
-    text: 'Photos, signalements d\'algues, méduses ou pollution. La communauté complète les données satellitaires.',
-    accent: '#013a63',
+    number: '03',
+    icon: '🗺️',
+    title: 'Analyse et carte des plages',
+    text: 'Tiwave calcule un score de baignabilité pour chaque plage et l\'affiche sur une carte. Un coup d\'œil suffit pour choisir où aller.',
+    accent: '#ff6d5a',
   },
 ]
 
 export function Features() {
   return (
-    <section id="features" className="py-24 bg-white">
+    <section id="comment-ca-marche" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#013a63] mb-4">
-            Ce que Tiwave te dit avant d&apos;y aller.
+            Comment ça marche ?
           </h2>
-          <p className="text-lg text-gray-500">
-            On n&apos;avait pas les bons outils pour lire nos plages. Maintenant si.
+          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+            Trois sources, une synthèse claire. On fait le travail pour que tu n&apos;aies pas à le faire.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {features.map((f) => (
-            <div
-              key={f.title}
-              className="flex gap-5 p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow"
-            >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((s) => (
+            <div key={s.number} className="relative p-8 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow">
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                style={{ backgroundColor: f.accent + '20' }}
+                className="text-5xl font-black mb-4 opacity-10 select-none"
+                style={{ color: s.accent }}
               >
-                {f.icon}
+                {s.number}
               </div>
-              <div>
-                <h3 className="font-semibold text-[#013a63] mb-2">{f.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.text}</p>
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+                style={{ backgroundColor: s.accent + '20' }}
+              >
+                {s.icon}
               </div>
+              <h3 className="font-bold text-[#013a63] text-lg mb-3">{s.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{s.text}</p>
             </div>
           ))}
         </div>

@@ -1,60 +1,123 @@
-const sources = [
+import { Chip, Divider } from '@heroui/react'
+import { Satellite, Wind, FlaskConical, CheckCircle2 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+
+type Source = {
+  icon: LucideIcon
+  name: string
+  shortDescription: string
+  detail: string
+  accentColor: string
+}
+
+const sources: Source[] = [
   {
+    icon: Satellite,
     name: 'NOAA ERDDAP / AFAI',
-    description: 'Index d\'anomalie des algues flottantes, mis à jour quotidiennement via imagerie satellite',
-    logo: '🛰️',
+    shortDescription: 'Imagerie satellite',
+    detail:
+      "Index d'anomalie des algues flottantes mis à jour quotidiennement. Détection des masses de sargasses à 7 jours.",
+    accentColor: '#0093d0',
   },
   {
+    icon: Wind,
     name: 'Open-Meteo Marine API',
-    description: 'Houle, vent, UV, température de l\'eau et de l\'air — précision horaire',
-    logo: '🌤️',
+    shortDescription: 'Météo marine',
+    detail:
+      "Houle, vent, UV, température de l'eau et de l'air. Précision horaire, modèle ECMWF.",
+    accentColor: '#2ed6b0',
   },
   {
+    icon: FlaskConical,
     name: 'ARS Martinique',
-    description: 'Résultats officiels de qualité des eaux de baignade (programme national Baignade)',
-    logo: '🏛️',
+    shortDescription: 'Qualité eau officielle',
+    detail:
+      "Résultats officiels de qualité des eaux de baignade. Programme national Baignade, classifié selon la Directive Européenne.",
+    accentColor: '#ff6d5a',
   },
 ]
 
-const credibility = [
-  { label: 'Projet martiniquais', detail: 'Conçu depuis la Martinique, pour les Martiniquais' },
-  { label: 'Démarche data + terrain + IA', detail: 'Sources scientifiques, signaux communautaires, analyse automatisée' },
-  { label: 'Pré-pépinière Technopole CACEM', detail: 'Accompagnée dans le cadre du programme 2026' },
+const trustSignals = [
+  'Projet martiniquais',
+  'Démarche data + terrain + IA',
+  'Pré-pépinière Technopole CACEM',
+  'Open data uniquement',
+  'Aucune donnée vendue',
+  'RGPD conforme',
 ]
 
 export function DataSources() {
   return (
-    <section id="sources" className="py-24 bg-[#f4e9d8]/40">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#013a63] mb-4">
-            Des données de référence, pas des estimations.
+    <section id="sources" className="py-32 bg-[#020c1b]">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <p className="text-xs font-semibold tracking-[0.2em] text-[#0093d0]/70 uppercase mb-4">
+            Sources & crédibilité
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">
+            Des données de référence,<br className="hidden md:block" /> pas des estimations.
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            Tiwave ne produit pas d&apos;opinions — elle agrège et structure des sources scientifiques
-            et institutionnelles.
+          <p className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed">
+            TiWave ne produit pas d&apos;opinions — elle structure des sources scientifiques
+            et institutionnelles reconnues.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {sources.map((s) => (
-            <div key={s.name} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <div className="text-4xl mb-4">{s.logo}</div>
-              <h3 className="font-bold text-[#013a63] mb-2">{s.name}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{s.description}</p>
-            </div>
-          ))}
+        {/* Source cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+          {sources.map((s) => {
+            const Icon = s.icon
+            return (
+              <div
+                key={s.name}
+                className="bg-white/[0.04] border border-white/[0.07] rounded-2xl p-7 hover:border-white/[0.12] hover:bg-white/[0.06] transition-all duration-300"
+              >
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
+                  style={{
+                    backgroundColor: s.accentColor + '15',
+                    border: `1px solid ${s.accentColor}25`,
+                  }}
+                >
+                  <Icon size={18} style={{ color: s.accentColor }} />
+                </div>
+                <div className="flex items-start justify-between gap-2 mb-3">
+                  <h3 className="font-semibold text-white text-base tracking-tight leading-snug">
+                    {s.name}
+                  </h3>
+                  <span
+                    className="text-[10px] font-medium px-2 py-0.5 rounded-full shrink-0 mt-0.5"
+                    style={{
+                      color: s.accentColor,
+                      backgroundColor: s.accentColor + '15',
+                    }}
+                  >
+                    {s.shortDescription}
+                  </span>
+                </div>
+                <p className="text-white/40 text-sm leading-relaxed">{s.detail}</p>
+              </div>
+            )
+          })}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {credibility.map((c) => (
-            <div key={c.label} className="bg-white rounded-xl p-5 border border-gray-100 flex gap-4 items-start">
-              <span className="text-[#2ed6b0] text-xl mt-0.5">✓</span>
-              <div>
-                <p className="font-semibold text-[#013a63] text-sm">{c.label}</p>
-                <p className="text-gray-500 text-xs mt-1">{c.detail}</p>
-              </div>
-            </div>
+        <Divider className="bg-white/[0.06] mb-10" />
+
+        {/* Trust chips */}
+        <div className="flex flex-wrap gap-3 justify-center">
+          {trustSignals.map((signal) => (
+            <Chip
+              key={signal}
+              startContent={<CheckCircle2 size={13} className="text-[#2ed6b0] ml-1" />}
+              classNames={{
+                base: 'bg-white/[0.04] border border-white/[0.08] text-white/50 h-8',
+                content: 'text-xs font-medium px-1',
+              }}
+              variant="bordered"
+            >
+              {signal}
+            </Chip>
           ))}
         </div>
       </div>

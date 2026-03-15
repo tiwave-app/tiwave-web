@@ -1,52 +1,103 @@
-import { Button } from '@heroui/react'
+import { Button, Chip } from '@heroui/react'
+
+const stats = [
+  { value: '70+', label: 'plages référencées' },
+  { value: '3', label: 'sources institutionnelles' },
+  { value: '1h', label: 'fréquence de mise à jour' },
+]
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#013a63] to-[#0093d0]">
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm mb-8">
-          <span className="w-2 h-2 rounded-full bg-[#2ed6b0] animate-pulse" />
-          Sélectionnée à la pré-pépinière Technopole CACEM · Martinique, 2026
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020c1b] pt-16">
+      {/* Atmospheric glow orbs */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(0,147,208,0.12) 0%, transparent 70%)',
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(46,214,176,0.08) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Main content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        {/* Badge */}
+        <div className="flex justify-center mb-8">
+          <Chip
+            startContent={
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2ed6b0] animate-pulse ml-1" />
+            }
+            classNames={{
+              base: 'bg-white/5 border border-white/10 text-white/50 text-xs px-3 h-7',
+            }}
+            variant="bordered"
+          >
+            Pré-pépinière Technopole CACEM · Martinique, 2026
+          </Chip>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          La plateforme référente pour<br />
-          <span className="text-[#2ed6b0]">la santé des plages</span> en temps réel
+        {/* Headline */}
+        <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span className="block text-white">La plateforme référente</span>
+          <span className="block text-white">pour la santé des plages</span>
+          <span
+            className="block"
+            style={{
+              background: 'linear-gradient(90deg, #2ed6b0 0%, #0093d0 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            en temps réel.
+          </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Tiwave agrège des données open source, des signaux terrain et les ressentis
-          des usagers pour rendre la qualité des plages de Martinique plus lisible.
+        {/* Subtitle */}
+        <p className="text-lg md:text-xl text-white/50 mb-10 max-w-2xl mx-auto leading-relaxed">
+          TiWave agrège données institutionnelles, signaux satellite et ressentis terrain
+          pour rendre les conditions de baignade lisibles{' '}
+          <span className="text-white/70">en un coup d&apos;œil</span>.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button
             as="a"
             href="#newsletter"
             size="lg"
-            className="bg-[#2ed6b0] text-[#013a63] font-semibold px-8"
+            className="bg-[#2ed6b0] text-[#020c1b] font-semibold px-8 rounded-full shadow-[0_0_40px_rgba(46,214,176,0.3)]"
           >
-            Rejoindre la liste d&apos;attente →
+            Rejoindre la liste d&apos;attente
           </Button>
           <Button
             as="a"
-            href="#comment-ca-marche"
+            href="#how-it-works"
             size="lg"
             variant="bordered"
-            className="border-white/40 text-white"
+            className="border-white/15 text-white/70 hover:border-white/30 hover:text-white rounded-full transition-all duration-300"
           >
             Découvrir le projet ↓
           </Button>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-            fill="white"
-          />
-        </svg>
+      {/* Stats strip */}
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 mt-24 mb-12">
+        <div className="grid grid-cols-3 divide-x divide-white/[0.06] border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm overflow-hidden">
+          {stats.map((stat) => (
+            <div key={stat.label} className="py-6 text-center px-4">
+              <div className="text-3xl font-bold text-white tracking-tight">{stat.value}</div>
+              <div className="text-xs text-white/35 mt-1.5 leading-snug">{stat.label}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

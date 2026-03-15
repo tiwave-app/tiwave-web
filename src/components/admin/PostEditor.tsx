@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Input, Button, Switch, Textarea } from '@heroui/react'
+import ReactMarkdown from 'react-markdown'
 import { createClient } from '@/lib/supabase-client'
 
 type Post = {
@@ -139,7 +140,7 @@ export function PostEditor({ initialData }: Props) {
       {preview ? (
         <div className="border border-gray-200 rounded-xl p-6 min-h-64 prose prose-slate max-w-none bg-white">
           {form.content ? (
-            <div dangerouslySetInnerHTML={{ __html: form.content.replace(/\n/g, '<br/>') }} />
+            <ReactMarkdown>{form.content}</ReactMarkdown>
           ) : (
             <p className="text-gray-400">Aucun contenu…</p>
           )}

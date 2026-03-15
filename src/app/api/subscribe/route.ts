@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   const { email } = await request.json()
 
-  if (!email || typeof email !== 'string' || !email.includes('@')) {
+  if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: 'Email invalide.' }, { status: 400 })
   }
 

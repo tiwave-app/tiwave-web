@@ -1,8 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@tiwave/supabase'],
-  async headers() {
+async headers() {
     return [
       {
         source: '/(.*)',

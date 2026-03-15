@@ -38,7 +38,7 @@ const steps: Step[] = [
 
 export function Features() {
   return (
-    <section id="how-it-works" className="py-32 bg-[#050f1e]">
+    <section id="how-it-works" className="py-32 bg-[#071e38]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">

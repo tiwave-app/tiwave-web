@@ -35,7 +35,7 @@ const valueProps: ValueProp[] = [
 
 export function About() {
   return (
-    <section id="why-tiwave" className="py-32 bg-[#020c1b]">
+    <section id="why-tiwave" className="relative py-32 bg-[#020c1b] overflow-hidden">
       {/* Ambient glow */}
       <div
         aria-hidden
@@ -48,8 +48,8 @@ export function About() {
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#0093d0]/70 uppercase mb-4">
-            Pourquoi TiWave
+          <p className="text-xs font-semibold tracking-[0.2em] text-[#2ed6b0]/60 uppercase mb-4">
+            Pourquoi <span className="text-[#0093d0]">T</span>iWave
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">
             Parce que nos plages méritent<br className="hidden md:block" /> mieux que l&apos;incertitude.

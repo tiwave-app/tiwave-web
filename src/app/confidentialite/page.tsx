@@ -5,11 +5,11 @@ export default function Confidentialite() {
       <div className="prose prose-slate">
         <h2>Données collectées</h2>
         <p>
-          Tiwave collecte uniquement l&apos;adresse email des personnes qui s&apos;inscrivent à la liste d&apos;attente ou à la newsletter. Ces données ne sont pas transmises à des tiers.
+          TiWave collecte uniquement l&apos;adresse email des personnes qui s&apos;inscrivent à la liste d&apos;attente ou à la newsletter. Ces données ne sont pas transmises à des tiers.
         </p>
         <h2>Finalité</h2>
         <p>
-          Les emails collectés sont utilisés exclusivement pour informer les inscrits du lancement de l&apos;application Tiwave et pour l&apos;envoi de la newsletter.
+          Les emails collectés sont utilisés exclusivement pour informer les inscrits du lancement de l&apos;application TiWave et pour l&apos;envoi de la newsletter.
         </p>
         <h2>Vos droits</h2>
         <p>

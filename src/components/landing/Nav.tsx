@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Navbar,
   NavbarBrand,
@@ -22,9 +23,9 @@ export default function Nav() {
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
         base: 'fixed top-0 bg-[#020c1b]/80 backdrop-blur-xl border-b border-white/[0.06] z-50',
-        wrapper: 'max-w-7xl px-6',
+        wrapper: 'max-w-7xl px-8 sm:px-12 py-3',
       }}
-      maxWidth="xl"
+      maxWidth="2xl"
       isBlurred={false}
     >
       {/* Mobile toggle + brand */}
@@ -34,9 +35,17 @@ export default function Nav() {
           className="sm:hidden text-white/50 hover:text-white"
         />
         <NavbarBrand>
-          <Link href="/" className="font-bold text-xl tracking-tight">
-            <span className="text-white">Tiwave</span>
-            <span className="text-[#2ed6b0]">.</span>
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image
+              src="/logo.png"
+              alt="TiWave"
+              width={34}
+              height={34}
+              className="rounded-full"
+            />
+            <span className="font-bold text-xl tracking-tight">
+              <span className="text-[#0093d0]">T</span><span className="text-white">iWave</span>
+            </span>
           </Link>
         </NavbarBrand>
       </NavbarContent>

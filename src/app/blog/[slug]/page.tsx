@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .single() as { data: Pick<PostRow, 'title' | 'excerpt'> | null; error: unknown }
 
   if (!data) return {}
-  return { title: `${data.title} — Tiwave`, description: data.excerpt ?? undefined }
+  return { title: `${data.title} — TiWave`, description: data.excerpt ?? undefined }
 }
 
 export default async function BlogPostPage({ params }: Props) {

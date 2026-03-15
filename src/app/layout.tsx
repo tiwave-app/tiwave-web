@@ -7,15 +7,15 @@ import './globals.css'
 const geist = Geist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Tiwave — L\'app qui lit la mer avant toi',
+  title: 'TiWave — L\'app qui lit la mer avant toi',
   description:
-    'Tiwave agrège en temps réel les données de houle, de sargasses et de qualité de l\'eau pour toutes les plages de la Martinique.',
+    'TiWave agrège en temps réel les données de houle, de sargasses et de qualité de l\'eau pour toutes les plages de la Martinique.',
   metadataBase: new URL('https://tiwave.app'),
   openGraph: {
-    title: 'Tiwave',
+    title: 'TiWave',
     description: 'L\'app qui lit la mer avant toi.',
     url: 'https://tiwave.app',
-    siteName: 'Tiwave',
+    siteName: 'TiWave',
     locale: 'fr_FR',
     type: 'website',
   },

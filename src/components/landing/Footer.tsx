@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Divider } from '@heroui/react'
+import { Linkedin, Instagram, MessageCircle } from 'lucide-react'
 
 const projectLinks = [
   { href: '#how-it-works', label: 'Comment ça marche' },
@@ -14,6 +15,24 @@ const legalLinks = [
   { href: '#newsletter', label: 'Newsletter' },
 ]
 
+const socialLinks = [
+  {
+    href: 'https://www.linkedin.com/company/tiwave',
+    label: 'LinkedIn',
+    icon: Linkedin,
+  },
+  {
+    href: 'https://www.instagram.com/tiwave.app',
+    label: 'Instagram',
+    icon: Instagram,
+  },
+  {
+    href: 'https://chat.whatsapp.com/H2YiHQOO1dqFtSpCGdpiV7',
+    label: 'WhatsApp',
+    icon: MessageCircle,
+  },
+]
+
 export default function Footer() {
   return (
     <footer className="bg-[#020c1b] border-t border-white/[0.06]">
@@ -22,8 +41,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="text-2xl font-bold tracking-tight mb-3">
-              <span className="text-white">Tiwave</span>
-              <span className="text-[#2ed6b0]">.</span>
+              <span className="text-[#0093d0]">T</span><span className="text-white">iWave</span>
             </div>
             <p className="text-white/35 text-sm leading-relaxed mb-4">
               La plateforme référente pour la santé des plages en Martinique.
@@ -31,10 +49,29 @@ export default function Footer() {
             <p className="text-white/25 text-xs">Martinique, Antilles françaises</p>
             <a
               href="mailto:contact@tiwave.app"
-              className="text-white/25 text-xs hover:text-white/50 transition-colors duration-200 mt-1 block"
+              className="text-white/25 text-xs hover:text-white/50 transition-colors duration-200 mt-1 block mb-5"
             >
               contact@tiwave.app
             </a>
+
+            {/* Social links */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map((s) => {
+                const Icon = s.icon
+                return (
+                  <a
+                    key={s.href}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white hover:border-white/20 hover:bg-white/[0.08] transition-all duration-200"
+                  >
+                    <Icon size={15} />
+                  </a>
+                )
+              })}
+            </div>
           </div>
 
           {/* Project links */}
@@ -87,7 +124,7 @@ export default function Footer() {
         <Divider className="bg-white/[0.06] mb-6" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-white/20 text-xs">© 2026 Tiwave — Tous droits réservés</p>
+          <p className="text-white/20 text-xs">© 2026 TiWave — Tous droits réservés</p>
           <p className="text-white/20 text-xs">
             Accompagnée par la{' '}
             <span className="text-white/35">Technopole CACEM</span>

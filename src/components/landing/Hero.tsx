@@ -1,9 +1,9 @@
-import { Button, Chip } from '@heroui/react'
+import { Button } from '@heroui/react'
 
 const stats = [
   { value: '70+', label: 'plages référencées' },
   { value: '3', label: 'sources institutionnelles' },
-  { value: '1h', label: 'fréquence de mise à jour' },
+  { value: '100%', label: 'open data' },
 ]
 
 export function Hero() {
@@ -27,21 +27,6 @@ export function Hero() {
 
       {/* Main content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <div className="flex justify-center mb-8">
-          <Chip
-            startContent={
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2ed6b0] animate-pulse ml-1" />
-            }
-            classNames={{
-              base: 'bg-white/5 border border-white/10 text-white/50 text-xs px-3 h-7',
-            }}
-            variant="bordered"
-          >
-            Pré-pépinière Technopole CACEM · Martinique, 2026
-          </Chip>
-        </div>
-
         {/* Headline */}
         <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
           <span className="block text-white">La plateforme référente</span>

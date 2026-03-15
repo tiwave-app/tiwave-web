@@ -5,7 +5,7 @@ export default function MentionsLegales() {
       <div className="prose prose-slate">
         <h2>Éditeur</h2>
         <p>
-          Tiwave<br />
+          TiWave<br />
           Martinique, Antilles françaises<br />
           contact@tiwave.app
         </p>

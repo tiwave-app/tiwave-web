@@ -52,7 +52,7 @@ export function DataSources() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#0093d0]/70 uppercase mb-4">
+          <p className="text-xs font-semibold tracking-[0.2em] text-[#2ed6b0]/60 uppercase mb-4">
             Sources & crédibilité
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">

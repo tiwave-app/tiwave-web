@@ -35,7 +35,7 @@ export default function AdminLoginPage() {
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="flex flex-col items-center pt-8 pb-2">
           <div className="text-2xl font-bold text-[#013a63] mb-1">
-            Tiwave<span className="text-[#0093d0]">.</span>
+            <span className="text-[#0093d0]">T</span>iWave
           </div>
           <p className="text-sm text-gray-400">Administration</p>
         </CardHeader>

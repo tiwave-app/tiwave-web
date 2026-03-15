@@ -1,5 +1,5 @@
 import { Card, CardBody, Button } from '@heroui/react'
-import { House, Users, Dumbbell, Building2 } from 'lucide-react'
+import { House, Plane, Dumbbell, Building2 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 type Audience = {
@@ -18,11 +18,11 @@ const audiences: Audience[] = [
       "Vous vivez en Martinique et voulez savoir si votre plage du dimanche est en bonne santé. TiWave est pensée pour vous en premier.",
   },
   {
-    icon: Users,
-    title: 'Familles',
-    tag: 'Avec enfants',
+    icon: Plane,
+    title: 'Touristes',
+    tag: 'Visiteurs',
     description:
-      "Partir avec les enfants sans mauvaise surprise. Eau conforme, sargasses, conditions douces — tout en un coup d'œil avant de sortir.",
+      "Vous découvrez l'île et cherchez une plage adaptée à votre journée. TiWave vous aide à comprendre rapidement les conditions avant de partir.",
   },
   {
     icon: Dumbbell,
@@ -42,7 +42,7 @@ const audiences: Audience[] = [
 
 export function ForWho() {
   return (
-    <section id="for-who" className="py-32 bg-[#050f1e]">
+    <section id="for-who" className="py-32 bg-[#071e38]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
@@ -50,7 +50,7 @@ export function ForWho() {
             Pour qui
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">
-            TiWave s&apos;adresse à ceux<br className="hidden md:block" /> qui vivent avec la mer.
+            <span className="text-[#0093d0]">T</span>iWave s&apos;adresse à ceux<br className="hidden md:block" /> qui vivent avec la mer.
           </h2>
           <p className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed">
             Pas seulement à ceux qui la regardent.

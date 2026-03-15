@@ -66,7 +66,7 @@ export function NewsletterForm() {
               backgroundClip: 'text',
             }}
           >
-            à découvrir TiWave.
+            à découvrir <span className="text-[#0093d0]">T</span>iWave.
           </span>
         </h2>
 
@@ -105,7 +105,7 @@ export function NewsletterForm() {
               endContent={status !== 'loading' ? <ArrowRight size={16} /> : undefined}
               className="bg-[#2ed6b0] text-[#020c1b] font-semibold px-7 rounded-xl h-12 shrink-0 shadow-[0_0_30px_rgba(46,214,176,0.25)]"
             >
-              Rejoindre la liste
+              Je veux être notifié
             </Button>
           </form>
         )}

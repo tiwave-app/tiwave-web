@@ -48,17 +48,15 @@ export function PressSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
           {/* Prix Mitan Tjè */}
           <div
-            className="relative overflow-hidden rounded-2xl border border-[#f4c542]/20 p-7"
-            style={{ background: 'linear-gradient(135deg, rgba(244,197,66,0.08) 0%, rgba(244,197,66,0.03) 100%)' }}
+            className="relative overflow-hidden rounded-2xl border border-[#ff6d5a]/20 p-7"
+            style={{ background: 'linear-gradient(135deg, rgba(255,109,90,0.08) 0%, rgba(255,109,90,0.03) 100%)' }}
           >
-            <div aria-hidden className="pointer-events-none absolute -top-12 -right-12 w-48 h-48 rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(244,197,66,0.12) 0%, transparent 70%)' }} />
             <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#f4c542]/15 border border-[#f4c542]/25 flex items-center justify-center flex-shrink-0">
-                <Trophy size={26} className="text-[#f4c542]" />
+              <div className="w-14 h-14 rounded-2xl bg-[#ff6d5a]/15 border border-[#ff6d5a]/25 flex items-center justify-center flex-shrink-0">
+                <Trophy size={26} className="text-[#ff6d5a]" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[10px] font-semibold tracking-[0.2em] text-[#f4c542]/70 uppercase mb-1">
+                <div className="text-[10px] font-semibold tracking-[0.2em] text-[#ff6d5a]/70 uppercase mb-1">
                   Lauréate — Fanm Dijital 2025
                 </div>
                 <h3 className="text-white font-bold text-xl tracking-tight">Prix Mitan Tjè</h3>
@@ -66,7 +64,7 @@ export function PressSection() {
                   Collectivité Territoriale de Martinique — 5ème édition
                 </p>
               </div>
-              <span className="shrink-0 inline-flex items-center gap-1.5 bg-[#f4c542]/10 border border-[#f4c542]/20 rounded-full px-4 py-1.5 text-xs text-[#f4c542] font-medium">
+              <span className="shrink-0 inline-flex items-center gap-1.5 bg-[#ff6d5a]/10 border border-[#ff6d5a]/20 rounded-full px-4 py-1.5 text-xs text-[#ff6d5a] font-medium">
                 Fév. 2026
               </span>
             </div>
@@ -107,7 +105,7 @@ export function PressSection() {
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col justify-between bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 hover:border-white/[0.15] hover:bg-white/[0.05] transition-all duration-300"
+              className="group flex flex-col justify-between bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 hover:border-white/[0.15] hover:bg-white/[0.05] hover:-translate-y-1 transition-all duration-300"
             >
               <div>
                 <p className="text-[#2ed6b0]/60 text-[10px] font-semibold uppercase tracking-widest mb-2">

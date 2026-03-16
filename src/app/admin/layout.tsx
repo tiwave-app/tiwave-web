@@ -30,7 +30,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <aside className="w-56 bg-[#013a63] text-white flex flex-col">
         <div className="px-6 py-5 border-b border-white/10">
           <div className="text-lg font-bold">
-            <span className="text-[#0093d0]">T</span>iWave
+            <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>
           </div>
           <p className="text-xs text-white/50 mt-0.5">Admin</p>
         </div>

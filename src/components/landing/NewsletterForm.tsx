@@ -57,7 +57,7 @@ export function NewsletterForm() {
 
         {/* Headline */}
         <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5 leading-[1.1]">
-          Rejoignez les premiers<br />
+          Soyez les premiers<br />
           <span
             style={{
               background: 'linear-gradient(90deg, #2ed6b0 0%, #0093d0 100%)',
@@ -66,7 +66,7 @@ export function NewsletterForm() {
               backgroundClip: 'text',
             }}
           >
-            à découvrir <span className="text-[#0093d0]">T</span>iWave.
+            à découvrir <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>.
           </span>
         </h2>
 
@@ -103,7 +103,8 @@ export function NewsletterForm() {
               type="submit"
               isLoading={status === 'loading'}
               endContent={status !== 'loading' ? <ArrowRight size={16} /> : undefined}
-              className="bg-[#2ed6b0] text-[#020c1b] font-semibold px-7 rounded-xl h-12 shrink-0 shadow-[0_0_30px_rgba(46,214,176,0.25)]"
+              className="text-[#020c1b] font-semibold px-7 rounded-xl h-12 shrink-0 shadow-[0_0_30px_rgba(46,214,176,0.3)]"
+              style={{ background: 'linear-gradient(135deg, #2ed6b0 0%, #17c4a4 100%)' }}
             >
               Je veux être notifié
             </Button>

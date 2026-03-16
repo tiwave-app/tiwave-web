@@ -41,7 +41,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="text-2xl font-bold tracking-tight mb-3">
-              <span className="text-[#0093d0]">T</span><span className="text-white">iWave</span>
+              <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>
             </div>
             <p className="text-white/35 text-sm leading-relaxed mb-4">
               La plateforme référente pour la santé des plages en Martinique.

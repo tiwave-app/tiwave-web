@@ -22,7 +22,7 @@ export default function Nav() {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
-        base: 'fixed top-0 bg-[#020c1b]/80 backdrop-blur-xl border-b border-white/[0.06] z-50',
+        base: 'fixed top-0 bg-[#020c1b]/60 backdrop-blur-xl border-b border-white/[0.08] z-50',
         wrapper: 'max-w-7xl px-8 sm:px-12 py-3',
       }}
       maxWidth="2xl"
@@ -44,7 +44,7 @@ export default function Nav() {
               className="rounded-full"
             />
             <span className="font-bold text-xl tracking-tight">
-              <span className="text-[#0093d0]">T</span><span className="text-white">iWave</span>
+              <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>
             </span>
           </Link>
         </NavbarBrand>
@@ -85,7 +85,8 @@ export default function Nav() {
             as="a"
             href="#newsletter"
             size="sm"
-            className="bg-[#2ed6b0] text-[#020c1b] font-semibold rounded-full px-5 text-sm shadow-[0_0_20px_rgba(46,214,176,0.25)]"
+            className="text-[#020c1b] font-semibold rounded-full px-5 text-sm shadow-[0_0_20px_rgba(46,214,176,0.3)]"
+            style={{ background: 'linear-gradient(135deg, #2ed6b0 0%, #17c4a4 100%)' }}
           >
             Rejoindre la liste
           </Button>
@@ -122,7 +123,8 @@ export default function Nav() {
             as="a"
             href="#newsletter"
             onClick={() => setIsMenuOpen(false)}
-            className="bg-[#2ed6b0] text-[#020c1b] font-semibold rounded-full w-full"
+            className="text-[#020c1b] font-semibold rounded-full w-full"
+            style={{ background: 'linear-gradient(135deg, #2ed6b0 0%, #17c4a4 100%)' }}
             size="lg"
           >
             Rejoindre la liste d&apos;attente

@@ -8,7 +8,12 @@ const stats = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020c1b] pt-16">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020c1b] pt-16"
+      style={{
+        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+      }}
+    >
       {/* Atmospheric glow orbs */}
       <div
         aria-hidden
@@ -28,9 +33,9 @@ export function Hero() {
       {/* Main content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Headline */}
-        <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
-          <span className="block text-white">La plateforme référente</span>
-          <span className="block text-white">pour la santé des plages</span>
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span className="block text-white">La plateforme de référence</span>
+          <span className="block text-white">pour comprendre l&apos;état des plages</span>
           <span
             className="block"
             style={{
@@ -45,7 +50,7 @@ export function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-white/50 mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
           TiWave agrège données institutionnelles, signaux satellite et ressentis terrain
           pour rendre les conditions de baignade lisibles{' '}
           <span className="text-white/70">en un coup d&apos;œil</span>.
@@ -57,7 +62,10 @@ export function Hero() {
             as="a"
             href="#newsletter"
             size="lg"
-            className="bg-[#2ed6b0] text-[#020c1b] font-semibold px-8 rounded-full shadow-[0_0_40px_rgba(46,214,176,0.3)]"
+            className="text-[#020c1b] font-semibold px-8 rounded-full shadow-[0_0_40px_rgba(46,214,176,0.35)]"
+            style={{
+              background: 'linear-gradient(135deg, #2ed6b0 0%, #17c4a4 100%)',
+            }}
           >
             Rejoindre la liste d&apos;attente
           </Button>
@@ -78,7 +86,7 @@ export function Hero() {
         <div className="grid grid-cols-3 divide-x divide-white/[0.06] border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm overflow-hidden">
           {stats.map((stat) => (
             <div key={stat.label} className="py-6 text-center px-4">
-              <div className="text-3xl font-bold text-white tracking-tight">{stat.value}</div>
+              <div className="text-4xl font-bold text-white tracking-tight">{stat.value}</div>
               <div className="text-xs text-white/35 mt-1.5 leading-snug">{stat.label}</div>
             </div>
           ))}

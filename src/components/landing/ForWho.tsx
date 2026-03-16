@@ -50,7 +50,7 @@ export function ForWho() {
             Pour qui
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">
-            <span className="text-[#0093d0]">T</span>iWave s&apos;adresse à ceux<br className="hidden md:block" /> qui vivent avec la mer.
+            <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span> s&apos;adresse à ceux<br className="hidden md:block" /> qui vivent avec la mer.
           </h2>
           <p className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed">
             Pas seulement à ceux qui la regardent.
@@ -65,7 +65,7 @@ export function ForWho() {
               <Card
                 key={a.title}
                 classNames={{
-                  base: 'bg-white/[0.04] border border-white/[0.07] hover:border-[#2ed6b0]/20 rounded-2xl shadow-none transition-all duration-300 hover:bg-white/[0.06] group',
+                  base: 'bg-white/[0.04] border border-white/[0.07] hover:border-[#2ed6b0]/20 rounded-2xl shadow-none transition-all duration-300 hover:bg-white/[0.06] hover:-translate-y-1 group',
                 }}
                 shadow="none"
               >

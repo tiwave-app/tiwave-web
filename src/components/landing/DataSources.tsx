@@ -71,7 +71,7 @@ export function DataSources() {
             return (
               <div
                 key={s.name}
-                className="bg-white/[0.04] border border-white/[0.07] rounded-2xl p-7 hover:border-white/[0.12] hover:bg-white/[0.06] transition-all duration-300"
+                className="bg-white/[0.04] border border-white/[0.07] rounded-2xl p-7 hover:border-white/[0.12] hover:bg-white/[0.06] hover:-translate-y-1 transition-all duration-300"
               >
                 <div
                   className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"

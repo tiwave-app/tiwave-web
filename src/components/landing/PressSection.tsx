@@ -34,13 +34,13 @@ const pressArticles: {
 
 export function PressSection() {
   return (
-    <section id="reconnaissance" className="py-24 bg-[#071e38] border-y border-white/[0.05]">
+    <section id="reconnaissance" className="py-24 bg-white border-y border-[#013a63]/[0.05]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Eyebrow */}
-        <p className="text-center text-xs font-semibold tracking-[0.2em] text-[#2ed6b0]/60 uppercase mb-4">
+        <p className="text-center text-xs font-semibold tracking-[0.2em] text-[#0093d0] uppercase mb-4">
           Reconnaissance & presse
         </p>
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-white tracking-tight mb-14">
+        <h2 className="text-center text-3xl md:text-4xl font-bold text-[#013a63] tracking-tight mb-14">
           Ils parlent de nous.
         </h2>
 
@@ -59,8 +59,8 @@ export function PressSection() {
                 <div className="text-[10px] font-semibold tracking-[0.2em] text-[#ff6d5a]/70 uppercase mb-1">
                   Lauréate — Fanm Dijital 2025
                 </div>
-                <h3 className="text-white font-bold text-xl tracking-tight">Prix Mitan Tjè</h3>
-                <p className="text-white/45 text-sm mt-1">
+                <h3 className="text-[#013a63] font-bold text-xl tracking-tight">Prix Mitan Tjè</h3>
+                <p className="text-[#5a7a8e] text-sm mt-1">
                   Collectivité Territoriale de Martinique — 5ème édition
                 </p>
               </div>
@@ -85,8 +85,8 @@ export function PressSection() {
                 <div className="text-[10px] font-semibold tracking-[0.2em] text-[#2ed6b0]/70 uppercase mb-1">
                   Accompagnement — 2026
                 </div>
-                <h3 className="text-white font-bold text-xl tracking-tight">Pré-pépinière</h3>
-                <p className="text-white/45 text-sm mt-1">
+                <h3 className="text-[#013a63] font-bold text-xl tracking-tight">Pré-pépinière</h3>
+                <p className="text-[#5a7a8e] text-sm mt-1">
                   Technopole CACEM · Martinique
                 </p>
               </div>
@@ -105,21 +105,21 @@ export function PressSection() {
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col justify-between bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 hover:border-white/[0.15] hover:bg-white/[0.05] hover:-translate-y-1 transition-all duration-300"
+              className="group flex flex-col justify-between bg-[#fdf9f3] border border-[#013a63]/[0.07] rounded-xl p-5 hover:border-[#0093d0]/25 hover:bg-white hover:-translate-y-1 transition-all duration-300"
             >
               <div>
-                <p className="text-[#2ed6b0]/60 text-[10px] font-semibold uppercase tracking-widest mb-2">
+                <p className="text-[#0093d0] text-[10px] font-semibold uppercase tracking-widest mb-2">
                   {article.source}
                 </p>
-                <p className="text-white/70 text-sm font-medium leading-snug group-hover:text-white transition-colors">
+                <p className="text-[#013a63]/70 text-sm font-medium leading-snug group-hover:text-[#013a63] transition-colors">
                   {article.title}
                 </p>
               </div>
               <div className="flex items-center justify-between mt-4">
-                <span className="text-white/25 text-xs">{article.date}</span>
+                <span className="text-[#013a63]/30 text-xs">{article.date}</span>
                 <ExternalLink
                   size={13}
-                  className="text-white/20 group-hover:text-[#2ed6b0] transition-colors"
+                  className="text-[#013a63]/20 group-hover:text-[#0093d0] transition-colors"
                 />
               </div>
             </a>

@@ -37,15 +37,17 @@ export default function Nav() {
         <NavbarBrand>
           <Link href="/" className="flex items-center gap-2.5">
             <Image
-              src="/logo.png"
-              alt="TiWave"
-              width={34}
-              height={34}
-              className="rounded-full"
+              src="/logo-mini.svg"
+              alt=""
+              width={32}
+              height={32}
             />
-            <span className="font-bold text-xl tracking-tight">
-              <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>
-            </span>
+            <Image
+              src="/logo-name.svg"
+              alt="TiWave"
+              width={90}
+              height={28}
+            />
           </Link>
         </NavbarBrand>
       </NavbarContent>

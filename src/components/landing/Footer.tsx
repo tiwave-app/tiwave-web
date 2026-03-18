@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Divider } from '@heroui/react'
 import { Linkedin, Instagram, MessageCircle } from 'lucide-react'
 
@@ -40,8 +41,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="text-2xl font-bold tracking-tight mb-3">
-              <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>
+            <div className="flex items-center gap-2.5 mb-3">
+              <Image src="/logo-mini.svg" alt="" width={28} height={28} />
+              <Image src="/logo-name.svg" alt="TiWave" width={80} height={24} />
             </div>
             <p className="text-white/35 text-sm leading-relaxed mb-4">
               La plateforme référente pour la santé des plages en Martinique.

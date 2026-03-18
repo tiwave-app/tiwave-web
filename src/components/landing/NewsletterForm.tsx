@@ -51,13 +51,13 @@ export function NewsletterForm() {
         <div className="flex justify-center mb-6">
           <div className="flex items-center gap-2 bg-[#2ed6b0]/10 border border-[#2ed6b0]/20 rounded-full px-4 py-1.5 text-xs text-[#2ed6b0] font-medium">
             <Zap size={11} />
-            Lancement en Martinique — 2026
+            Lancement en Martinique — dans quelques semaines
           </div>
         </div>
 
         {/* Headline */}
         <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5 leading-[1.1]">
-          Soyez les premiers<br />
+          Accédez à{' '}
           <span
             style={{
               background: 'linear-gradient(90deg, #2ed6b0 0%, #0093d0 100%)',
@@ -66,13 +66,13 @@ export function NewsletterForm() {
               backgroundClip: 'text',
             }}
           >
-            à découvrir <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>.
+            TiWave
           </span>
+          <br />avant tout le monde.
         </h2>
 
         <p className="text-white/50 text-lg mb-10 leading-relaxed">
-          Recevez les actus du projet, les articles sur la santé des plages martiniquaises,
-          et en avant-première la date de lancement de l&apos;app.
+          Recevez l&apos;accès prioritaire + les premières alertes plages martiniquaises.
         </p>
 
         {/* Form / Success state */}
@@ -81,7 +81,7 @@ export function NewsletterForm() {
             <div className="w-12 h-12 rounded-full bg-[#2ed6b0]/15 flex items-center justify-center mx-auto mb-4">
               <ArrowRight size={20} className="text-[#2ed6b0]" />
             </div>
-            <p className="text-white font-semibold text-lg">{message}</p>
+            <p className="text-white font-semibold text-lg">Accès prioritaire confirmé. On vous contacte en premier.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -106,7 +106,7 @@ export function NewsletterForm() {
               className="text-[#020c1b] font-semibold px-7 rounded-xl h-12 shrink-0 shadow-[0_0_30px_rgba(46,214,176,0.3)]"
               style={{ background: 'linear-gradient(135deg, #2ed6b0 0%, #17c4a4 100%)' }}
             >
-              Je veux être notifié
+              Je veux un accès prioritaire
             </Button>
           </form>
         )}
@@ -116,15 +116,15 @@ export function NewsletterForm() {
         )}
 
         {/* Micro trust copy */}
-        <div className="flex items-center justify-center gap-5 mt-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
           <div className="flex items-center gap-1.5 text-white/25 text-xs">
             <Lock size={11} />
-            Aucun spam
+            Places limitées
           </div>
           <div className="w-px h-3 bg-white/10" />
-          <span className="text-white/25 text-xs">Résiliable en un clic</span>
+          <span className="text-white/25 text-xs">Beta privée</span>
           <div className="w-px h-3 bg-white/10" />
-          <span className="text-white/25 text-xs">Martinique, 2026</span>
+          <span className="text-white/25 text-xs">Désinscription en 1 clic</span>
         </div>
       </div>
     </section>

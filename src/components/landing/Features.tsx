@@ -13,43 +13,43 @@ const steps: Step[] = [
   {
     number: '01',
     icon: Satellite,
-    title: 'Données open data',
+    title: 'Choisis ta plage',
     description:
-      "TiWave collecte automatiquement les données scientifiques et institutionnelles : imagerie satellite NOAA, météo marine Open-Meteo, analyses bactériologiques de l'ARS Martinique.",
+      "Visualise les conditions autour de toi — sargasses, météo marine, qualité de l'eau en un coup d'œil.",
     accentColor: '#0093d0',
   },
   {
     number: '02',
     icon: Users,
-    title: 'Signalements & ressentis terrain',
+    title: 'TiWave analyse en temps réel',
     description:
-      "Les usagers complètent la donnée satellite avec des photos, signalements d'algues, de méduses ou de pollution. La communauté voit ce que les capteurs ne voient pas.",
+      "Données croisées satellite + signalements terrain + météo marine — tout agrégé automatiquement.",
     accentColor: '#2ed6b0',
   },
   {
     number: '03',
     icon: Map,
-    title: 'Analyse et carte des plages',
+    title: 'Tu pars sereinement',
     description:
-      "TiWave calcule un score de baignabilité pour chaque plage et l'affiche sur une carte claire. Un coup d'œil suffit pour choisir.",
+      "Plus de mauvaises surprises. Un score, une couleur, une décision.",
     accentColor: '#ff6d5a',
   },
 ]
 
 export function Features() {
   return (
-    <section id="how-it-works" className="py-32 bg-[#071e38]">
+    <section id="how-it-works" className="py-32 bg-[#fdf9f3]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#2ed6b0]/70 uppercase mb-4">
+          <p className="text-xs font-semibold tracking-[0.2em] text-[#0093d0] uppercase mb-4">
             Fonctionnement
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">
-            Comment ça marche ?
+          <h2 className="text-4xl md:text-5xl font-bold text-[#013a63] tracking-tight mb-5">
+            En 10 secondes, vous savez où aller.
           </h2>
-          <p className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed">
-            Trois sources. Une synthèse claire. On fait le travail pour que vous n&apos;ayez pas à le faire.
+          <p className="text-[#5a7a8e] text-lg max-w-xl mx-auto leading-relaxed">
+            TiWave analyse les données pour vous. Vous n&apos;avez plus qu&apos;à choisir.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export function Features() {
             className="hidden md:block absolute top-[52px] left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-px"
             style={{
               background:
-                'linear-gradient(90deg, rgba(0,147,208,0.4) 0%, rgba(46,214,176,0.4) 50%, rgba(255,109,90,0.4) 100%)',
+                'linear-gradient(90deg, rgba(0,147,208,0.35) 0%, rgba(46,214,176,0.35) 50%, rgba(255,109,90,0.35) 100%)',
             }}
           />
 
@@ -70,11 +70,11 @@ export function Features() {
             return (
               <div
                 key={step.number}
-                className="relative bg-white/[0.04] border border-white/[0.07] rounded-2xl p-8 hover:border-white/[0.15] hover:bg-white/[0.06] hover:-translate-y-1 transition-all duration-300 group"
+                className="relative bg-white rounded-2xl p-8 shadow-[0_2px_16px_rgba(1,58,99,0.07)] hover:shadow-[0_8px_30px_rgba(1,58,99,0.12)] hover:-translate-y-1 transition-all duration-300 group"
               >
                 {/* Step number */}
                 <div
-                  className="text-7xl font-black leading-none mb-6 select-none opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-300"
+                  className="text-7xl font-black leading-none mb-6 select-none opacity-[0.12] group-hover:opacity-[0.22] transition-opacity duration-300"
                   style={{ color: step.accentColor }}
                 >
                   {step.number}
@@ -88,10 +88,10 @@ export function Features() {
                   <Icon size={20} style={{ color: step.accentColor }} />
                 </div>
 
-                <h3 className="font-semibold text-white text-lg mb-3 tracking-tight">
+                <h3 className="font-semibold text-[#013a63] text-lg mb-3 tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-white/45 text-sm leading-relaxed">{step.description}</p>
+                <p className="text-[#5a7a8e] text-sm leading-relaxed">{step.description}</p>
               </div>
             )
           })}

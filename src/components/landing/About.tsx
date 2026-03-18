@@ -13,62 +13,53 @@ const valueProps: ValueProp[] = [
   {
     icon: Compass,
     accentColor: '#2ed6b0',
-    title: 'Choisir sa plage plus sereinement',
+    title: 'Choisir sa plage sereinement',
     description:
-      "Fini les mauvaises surprises. Avant de partir, vous savez si l'eau est conforme, si les sargasses arrivent, si les conditions sont bonnes pour nager. L'information était là — TiWave la rend accessible.",
+      "Plus de doute avant de partir. Sachez si l'eau est conforme, si les sargasses arrivent, si les conditions sont bonnes.",
   },
   {
     icon: Waves,
     accentColor: '#0093d0',
-    title: 'Mieux comprendre les conditions réelles',
+    title: 'Des conditions fiables, pour tous',
     description:
-      "Les données brutes existent déjà — dispersées, techniques, inaccessibles au grand public. TiWave les agrège, les interprète et les restitue dans un langage clair, pour tout le monde.",
+      "Des données complexes rendues simples. Tout le monde mérite une information claire avant de partir.",
   },
   {
     icon: Globe,
     accentColor: '#ff6d5a',
-    title: 'Créer une culture citoyenne autour du littoral',
+    title: 'Une culture citoyenne du littoral',
     description:
-      "Quand les habitants observent, signalent et partagent, la plage devient un bien commun à surveiller ensemble. TiWave construit cette infrastructure de vigilance collective.",
+      "Une communauté qui observe et partage. La plage devient un bien commun à surveiller ensemble.",
   },
 ]
 
 export function About() {
   return (
-    <section id="why-tiwave" className="relative py-32 bg-[#020c1b] overflow-hidden">
-      {/* Ambient glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 -translate-x-1/2 w-[800px] h-[400px]"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(0,147,208,0.06) 0%, transparent 70%)',
-        }}
-      />
-
+    <section id="why-tiwave" className="relative py-32 bg-white overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#2ed6b0]/60 uppercase mb-4">
+          <p className="text-xs font-semibold tracking-[0.2em] text-[#0093d0] uppercase mb-4">
             Pourquoi TiWave
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-            Parce que nos plages méritent<br className="hidden md:block" /> mieux que l&apos;incertitude.
+          <h2 className="text-4xl md:text-5xl font-bold text-[#013a63] tracking-tight">
+            Parce qu&apos;aller à la plage<br className="hidden md:block" /> ne devrait jamais être un pari.
           </h2>
         </div>
 
         {/* Punchline card */}
         <div className="mb-10">
           <div
-            className="relative overflow-hidden rounded-2xl border border-[#0093d0]/20 px-8 py-7 text-center"
+            className="relative overflow-hidden rounded-2xl shadow-[0_2px_16px_rgba(1,58,99,0.07)] px-8 py-7 text-center"
             style={{
-              background: 'linear-gradient(135deg, rgba(0,147,208,0.08) 0%, rgba(46,214,176,0.05) 100%)',
+              background: 'linear-gradient(135deg, rgba(244,233,216,0.6) 0%, rgba(244,233,216,0.3) 100%)',
             }}
           >
-            <p className="text-white text-xl md:text-2xl font-semibold leading-snug tracking-tight">
-              <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span> n&apos;est pas une simple app météo.
+            <p className="text-[#013a63] text-xl md:text-2xl font-semibold leading-snug tracking-tight">
+              Aujourd&apos;hui, vous partez sans savoir.
             </p>
-            <p className="text-white/60 text-xl md:text-2xl font-semibold leading-snug tracking-tight mt-1">
-              C&apos;est une infrastructure de transparence pour le littoral.
+            <p className="text-[#0093d0] text-xl md:text-2xl font-semibold leading-snug tracking-tight mt-1">
+              Demain, vous décidez.
             </p>
           </div>
         </div>
@@ -81,7 +72,7 @@ export function About() {
               <Card
                 key={vp.title}
                 classNames={{
-                  base: 'bg-white/[0.04] border border-white/[0.07] hover:border-white/[0.15] rounded-2xl shadow-none transition-all duration-300 hover:bg-white/[0.06] hover:-translate-y-1',
+                  base: 'bg-[#fdf9f3] rounded-2xl shadow-[0_2px_16px_rgba(1,58,99,0.07)] hover:shadow-[0_8px_30px_rgba(1,58,99,0.12)] transition-all duration-300 hover:-translate-y-1',
                 }}
                 shadow="none"
               >
@@ -103,10 +94,10 @@ export function About() {
                     <Icon size={20} style={{ color: vp.accentColor }} />
                   </div>
 
-                  <h3 className="font-semibold text-white text-lg mb-3 tracking-tight leading-snug">
+                  <h3 className="font-semibold text-[#013a63] text-lg mb-3 tracking-tight leading-snug">
                     {vp.title}
                   </h3>
-                  <p className="text-white/45 text-sm leading-relaxed">{vp.description}</p>
+                  <p className="text-[#5a7a8e] text-sm leading-relaxed">{vp.description}</p>
                 </CardBody>
               </Card>
             )

@@ -48,19 +48,19 @@ const trustSignals = [
 
 export function DataSources() {
   return (
-    <section id="sources" className="py-32 bg-[#020c1b]">
+    <section id="sources" className="py-32 bg-[#fdf9f3]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#2ed6b0]/60 uppercase mb-4">
+          <p className="text-xs font-semibold tracking-[0.2em] text-[#0093d0] uppercase mb-4">
             Sources & crédibilité
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#013a63] tracking-tight mb-5">
             Des données de référence,<br className="hidden md:block" /> pas des estimations.
           </h2>
-          <p className="text-white/45 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#5a7a8e] text-lg max-w-xl mx-auto leading-relaxed">
             TiWave ne produit pas d&apos;opinions — elle structure des sources scientifiques
-            et institutionnelles reconnues.
+            et institutionnelles reconnues. Données utilisées par des institutions publiques.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export function DataSources() {
             return (
               <div
                 key={s.name}
-                className="bg-white/[0.04] border border-white/[0.07] rounded-2xl p-7 hover:border-white/[0.12] hover:bg-white/[0.06] hover:-translate-y-1 transition-all duration-300"
+                className="bg-white rounded-2xl p-7 shadow-[0_2px_16px_rgba(1,58,99,0.07)] hover:shadow-[0_8px_30px_rgba(1,58,99,0.12)] hover:-translate-y-1 transition-all duration-300"
               >
                 <div
                   className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
@@ -83,7 +83,7 @@ export function DataSources() {
                   <Icon size={18} style={{ color: s.accentColor }} />
                 </div>
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <h3 className="font-semibold text-white text-base tracking-tight leading-snug">
+                  <h3 className="font-semibold text-[#013a63] text-base tracking-tight leading-snug">
                     {s.name}
                   </h3>
                   <span
@@ -96,22 +96,22 @@ export function DataSources() {
                     {s.shortDescription}
                   </span>
                 </div>
-                <p className="text-white/40 text-sm leading-relaxed">{s.detail}</p>
+                <p className="text-[#5a7a8e] text-sm leading-relaxed">{s.detail}</p>
               </div>
             )
           })}
         </div>
 
-        <Divider className="bg-white/[0.06] mb-10" />
+        <Divider className="bg-[#013a63]/10 mb-10" />
 
         {/* Trust chips */}
         <div className="flex flex-wrap gap-3 justify-center">
           {trustSignals.map((signal) => (
             <Chip
               key={signal}
-              startContent={<CheckCircle2 size={13} className="text-[#2ed6b0] ml-1" />}
+              startContent={<CheckCircle2 size={13} className="text-[#0093d0] ml-1" />}
               classNames={{
-                base: 'bg-white/[0.04] border border-white/[0.08] text-white/50 h-8',
+                base: 'bg-[#013a63]/5 border border-[#013a63]/15 text-[#013a63]/60 h-8',
                 content: 'text-xs font-medium px-1',
               }}
               variant="bordered"

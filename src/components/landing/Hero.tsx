@@ -1,32 +1,33 @@
 import { Button } from '@heroui/react'
+import { CheckCircle, Lock } from 'lucide-react'
 
 const stats = [
-  { value: '70+', label: 'plages référencées' },
+  { value: '30+', label: 'plages de Martinique' },
   { value: '3', label: 'sources institutionnelles' },
   { value: '100%', label: 'open data' },
 ]
 
+const features = [
+  'Conditions mises à jour en temps réel',
+  'Score de baignade simple et clair',
+  'Alertes sargasses & qualité de l\'eau',
+]
+
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020c1b] pt-16"
-      style={{
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px)',
-        backgroundSize: '32px 32px',
-      }}
-    >
-      {/* Atmospheric glow orbs */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16">
+      {/* Background photo */}
       <div
         aria-hidden
-        className="pointer-events-none absolute top-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(0,147,208,0.12) 0%, transparent 70%)',
-        }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/hero-beach.jpg)' }}
       />
+      {/* Dark overlay — gradient for readability */}
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] rounded-full"
+        className="absolute inset-0"
         style={{
-          background: 'radial-gradient(circle, rgba(46,214,176,0.08) 0%, transparent 70%)',
+          background: 'linear-gradient(to bottom, rgba(1,20,40,0.55) 0%, rgba(1,20,40,0.72) 50%, rgba(1,10,25,0.88) 100%)',
         }}
       />
 
@@ -34,8 +35,7 @@ export function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Headline */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
-          <span className="block text-white">La plateforme de référence</span>
-          <span className="block text-white">pour comprendre l&apos;état des plages</span>
+          <span className="block text-white">Choisissez la bonne plage,</span>
           <span
             className="block"
             style={{
@@ -45,16 +45,25 @@ export function Hero() {
               backgroundClip: 'text',
             }}
           >
-            en temps réel.
+            avant même de partir.
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed">
-          TiWave agrège données institutionnelles, signaux satellite et ressentis terrain
-          pour rendre les conditions de baignade lisibles{' '}
-          <span className="text-white/70">en un coup d&apos;œil</span>.
+        <p className="text-lg md:text-xl text-white/60 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Qualité de l&apos;eau, sargasses, météo marine — toutes les conditions{' '}
+          <span className="text-white/70">en temps réel, en un coup d&apos;œil.</span>
         </p>
+
+        {/* Feature bullets */}
+        <ul className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+          {features.map((f) => (
+            <li key={f} className="flex items-center gap-2 text-white/60 text-sm">
+              <CheckCircle size={14} className="text-[#2ed6b0] shrink-0" />
+              {f}
+            </li>
+          ))}
+        </ul>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -67,7 +76,7 @@ export function Hero() {
               background: 'linear-gradient(135deg, #2ed6b0 0%, #17c4a4 100%)',
             }}
           >
-            Rejoindre la liste d&apos;attente
+            Je veux accéder à TiWave en avant-première
           </Button>
           <Button
             as="a"
@@ -78,6 +87,12 @@ export function Hero() {
           >
             Découvrir le projet ↓
           </Button>
+        </div>
+
+        {/* Urgency / social proof */}
+        <div className="flex items-center justify-center gap-2 mt-5 text-white/30 text-xs">
+          <Lock size={11} />
+          <span>Beta privée · Lancement Martinique dans quelques semaines · Places limitées</span>
         </div>
       </div>
 

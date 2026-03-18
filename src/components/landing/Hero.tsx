@@ -2,7 +2,7 @@ import { Button } from '@heroui/react'
 import { CheckCircle, Lock } from 'lucide-react'
 
 const stats = [
-  { value: '30+', label: 'plages de Martinique' },
+  { value: '70+', label: 'plages de Martinique' },
   { value: '3', label: 'sources institutionnelles' },
   { value: '100%', label: 'open data' },
 ]

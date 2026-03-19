@@ -41,9 +41,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 mb-3">
-              <Image src="/logo-mini.svg" alt="" width={28} height={28} />
-              <Image src="/logo-name.svg" alt="TiWave" width={80} height={24} />
+            <div className="mb-3">
+              <Image src="/logo-name.svg" alt="TiWave" width={90} height={26} />
             </div>
             <p className="text-white/35 text-sm leading-relaxed mb-4">
               La plateforme référente pour la santé des plages en Martinique.

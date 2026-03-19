@@ -35,17 +35,11 @@ export default function Nav() {
           className="sm:hidden text-white/50 hover:text-white"
         />
         <NavbarBrand>
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/logo-mini.svg"
-              alt=""
-              width={32}
-              height={32}
-            />
+          <Link href="/" className="flex items-center">
             <Image
               src="/logo-name.svg"
               alt="TiWave"
-              width={90}
+              width={100}
               height={28}
             />
           </Link>

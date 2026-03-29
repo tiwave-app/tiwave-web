@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Input, Button, Card, CardBody, CardHeader } from '@heroui/react'
 import { createClient } from '@/lib/supabase-client'
 
@@ -34,9 +35,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="flex flex-col items-center pt-8 pb-2">
-          <div className="text-2xl font-bold text-[#013a63] mb-1">
-            <span className="text-[#0093d0]">T</span><span style={{ color: '#f4e9d8' }}>iWave</span>
-          </div>
+          <Image src="/logo-name.svg" alt="TiWave" width={140} height={40} className="mb-2" />
           <p className="text-sm text-gray-400">Administration</p>
         </CardHeader>
         <CardBody className="px-8 pb-8">

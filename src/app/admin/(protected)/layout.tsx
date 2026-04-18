@@ -24,6 +24,14 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   )
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/admin/login')
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('is_admin')
+    .eq('id', user.id)
+    .single()
+
+  if (!profile?.is_admin) redirect('/admin/login')
   return (
     <div className="min-h-screen flex bg-gray-50">
       {/* Sidebar */}
@@ -38,6 +46,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         <nav className="flex-1 px-4 py-6 space-y-1">
           <SidebarLink href="/admin/posts">Articles</SidebarLink>
           <SidebarLink href="/admin/subscribers">Abonnés</SidebarLink>
+          <SidebarLink href="/admin/newsletter">Newsletter</SidebarLink>
+          <SidebarLink href="/admin/alerts">Alertes plage</SidebarLink>
         </nav>
 
         <div className="px-4 py-4 border-t border-white/10">

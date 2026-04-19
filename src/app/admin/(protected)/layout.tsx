@@ -27,11 +27,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('is_admin')
+    .select('role')
     .eq('id', user.id)
     .single()
 
-  if (!profile?.is_admin) redirect('/admin/login')
+  if (!profile?.role || !['admin', 'super_admin'].includes(profile.role)) redirect('/admin/login')
   return (
     <div className="min-h-screen flex bg-gray-50">
       {/* Sidebar */}
@@ -47,7 +47,6 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <SidebarLink href="/admin/posts">Articles</SidebarLink>
           <SidebarLink href="/admin/subscribers">Abonnés</SidebarLink>
           <SidebarLink href="/admin/newsletter">Newsletter</SidebarLink>
-          <SidebarLink href="/admin/alerts">Alertes plage</SidebarLink>
         </nav>
 
         <div className="px-4 py-4 border-t border-white/10">

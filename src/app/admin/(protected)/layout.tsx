@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
-import { LogoutButton } from './LogoutButton'
+import { LogoutButton } from '../LogoutButton'
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies()
@@ -27,11 +27,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('role')
+    .select('is_admin')
     .eq('id', user.id)
     .single()
 
-  if (!profile?.role || !['admin', 'super_admin'].includes(profile.role)) redirect('/admin/login')
+  if (!profile?.is_admin) redirect('/admin/login')
   return (
     <div className="min-h-screen flex bg-gray-50">
       {/* Sidebar */}
@@ -46,7 +46,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         <nav className="flex-1 px-4 py-6 space-y-1">
           <SidebarLink href="/admin/posts">Articles</SidebarLink>
           <SidebarLink href="/admin/subscribers">Abonnés</SidebarLink>
+          <SidebarLink href="/admin/contacts">Contacts</SidebarLink>
           <SidebarLink href="/admin/newsletter">Newsletter</SidebarLink>
+          <SidebarLink href="/admin/alerts">Alertes plage</SidebarLink>
         </nav>
 
         <div className="px-4 py-4 border-t border-white/10">

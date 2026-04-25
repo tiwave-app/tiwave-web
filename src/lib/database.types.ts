@@ -19,6 +19,42 @@ export interface Database {
         }
         Relationships: []
       }
+      contact_requests: {
+        Row: {
+          id: string
+          created_at: string
+          name: string
+          email: string
+          organisation: string
+          type: 'professionnel' | 'collectivite'
+          subject: string
+          message: string
+          status: 'nouveau' | 'traite'
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          name: string
+          email: string
+          organisation: string
+          type: 'professionnel' | 'collectivite'
+          subject: string
+          message: string
+          status?: 'nouveau' | 'traite'
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          name?: string
+          email?: string
+          organisation?: string
+          type?: 'professionnel' | 'collectivite'
+          subject?: string
+          message?: string
+          status?: 'nouveau' | 'traite'
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           id: string

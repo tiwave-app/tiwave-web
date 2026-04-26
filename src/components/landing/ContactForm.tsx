@@ -51,7 +51,7 @@ export function ContactForm() {
       body: JSON.stringify(form),
     })
 
-    const data = await res.json()
+    const data = await res.json().catch(() => ({}))
 
     if (res.ok) {
       setStatus('success')

@@ -48,7 +48,8 @@ export async function POST(request: Request) {
   })
 
   if (error) {
-    return NextResponse.json({ error: 'Erreur serveur.' }, { status: 500 })
+    console.error('[contact] Supabase error:', error)
+    return NextResponse.json({ error: error.message ?? 'Erreur serveur.' }, { status: 500 })
   }
 
   const typeLabel = type === 'collectivite' ? 'Collectivité / Institution' : 'Professionnel'

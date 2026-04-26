@@ -32,6 +32,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Erreur serveur.' }, { status: 500 })
     }
 
+    // Fire welcome email (non-blocking — don't fail the subscription if this errors)
+    fetch(`${supabaseUrl}/functions/v1/process-onboarding`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mode: 'welcome', email: email.toLowerCase().trim() }),
+    }).catch(err => console.error('process-onboarding welcome error:', err))
+
     return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Subscribe route unexpected error:', err)

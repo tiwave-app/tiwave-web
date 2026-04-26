@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Input, Button, Textarea, Select, SelectItem } from '@heroui/react'
+import { Input, Button, Select, SelectItem } from '@heroui/react'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 
 const SUBJECTS = [
@@ -156,17 +156,13 @@ export function ContactForm() {
 
       <div>
         <FieldLabel>Message</FieldLabel>
-        <Textarea
+        <textarea
           placeholder="Décrivez votre projet ou votre besoin…"
           value={form.message}
-          onValueChange={update('message')}
-          isRequired
-          minRows={4}
-          variant="bordered"
-          classNames={{
-            inputWrapper: 'bg-white/[0.06] border-white/15 hover:border-white/25 focus-within:border-[#2ed6b0]/50 rounded-xl',
-            input: 'text-white placeholder:text-white/25',
-          }}
+          onChange={(e) => update('message')(e.target.value)}
+          required
+          rows={5}
+          className="w-full bg-white/[0.06] border border-white/15 hover:border-white/25 focus:border-[#2ed6b0]/50 focus:outline-none rounded-xl px-3 py-3 text-white placeholder:text-white/25 text-sm resize-none"
         />
       </div>
 

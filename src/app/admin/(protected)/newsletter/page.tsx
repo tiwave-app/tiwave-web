@@ -160,9 +160,19 @@ export default function NewsletterPage() {
     setConfirmOpen(false)
     setStatus('sending')
     try {
-      const res = await fetch('/api/newsletter/send', {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+      const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      const { createClient } = await import('@supabase/supabase-js')
+      const supabase = createClient(supabaseUrl, anonKey)
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) throw new Error('Non authentifié')
+
+      const res = await fetch(`${supabaseUrl}/functions/v1/send-newsletter`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.access_token}`,
+        },
         body: JSON.stringify({ subject, previewText, body }),
       })
       const data = await res.json()

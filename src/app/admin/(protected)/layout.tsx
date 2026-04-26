@@ -27,11 +27,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('is_admin')
+    .select('role')
     .eq('id', user.id)
     .single()
 
-  if (!profile?.is_admin) redirect('/admin/login')
+  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') redirect('/admin/login')
   return (
     <div className="min-h-screen flex bg-gray-50">
       {/* Sidebar */}

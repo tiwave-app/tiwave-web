@@ -48,7 +48,6 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <SidebarLink href="/admin/subscribers">Abonnés</SidebarLink>
           <SidebarLink href="/admin/contacts">Contacts</SidebarLink>
           <SidebarLink href="/admin/newsletter">Newsletter</SidebarLink>
-          <SidebarLink href="/admin/alerts">Alertes plage</SidebarLink>
         </nav>
 
         <div className="px-4 py-4 border-t border-white/10">

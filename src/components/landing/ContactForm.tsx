@@ -15,6 +15,10 @@ const SUBJECTS = [
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
+function FieldLabel({ children }: { children: React.ReactNode }) {
+  return <p className="text-white/60 text-xs font-medium mb-1.5">{children}</p>
+}
+
 export function ContactForm() {
   const [form, setForm] = useState({
     name: '',
@@ -73,101 +77,98 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Nom + Email */}
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-4">
-        <Input
-          label="Nom complet"
-          placeholder="Marie Dupont"
-          value={form.name}
-          onValueChange={update('name')}
-          isRequired
-          variant="bordered"
-          classNames={inputClasses}
-        />
-        <Input
-          type="email"
-          label="Email professionnel"
-          placeholder="marie@mairie.mq"
-          value={form.email}
-          onValueChange={update('email')}
-          isRequired
-          variant="bordered"
-          classNames={inputClasses}
-        />
+        <div>
+          <FieldLabel>Nom complet</FieldLabel>
+          <Input
+            placeholder="Marie Dupont"
+            value={form.name}
+            onValueChange={update('name')}
+            isRequired
+            variant="bordered"
+            classNames={inputClasses}
+          />
+        </div>
+        <div>
+          <FieldLabel>Email professionnel</FieldLabel>
+          <Input
+            type="email"
+            placeholder="marie@mairie.mq"
+            value={form.email}
+            onValueChange={update('email')}
+            isRequired
+            variant="bordered"
+            classNames={inputClasses}
+          />
+        </div>
       </div>
 
-      {/* Organisation + Type */}
       <div className="grid sm:grid-cols-2 gap-4">
-        <Input
-          label="Organisation"
-          placeholder="Mairie de Fort-de-France"
-          value={form.organisation}
-          onValueChange={update('organisation')}
-          isRequired
-          variant="bordered"
-          classNames={inputClasses}
-        />
+        <div>
+          <FieldLabel>Organisation</FieldLabel>
+          <Input
+            placeholder="Mairie de Fort-de-France"
+            value={form.organisation}
+            onValueChange={update('organisation')}
+            isRequired
+            variant="bordered"
+            classNames={inputClasses}
+          />
+        </div>
+        <div>
+          <FieldLabel>Profil</FieldLabel>
+          <Select
+            placeholder="Sélectionner…"
+            selectedKeys={form.type ? new Set([form.type]) : new Set()}
+            onSelectionChange={(keys) => update('type')(Array.from(keys)[0] as string ?? '')}
+            isRequired
+            variant="bordered"
+            classNames={selectClasses}
+          >
+            <SelectItem key="professionnel" className="text-white data-[hover=true]:bg-white/10">
+              Professionnel
+            </SelectItem>
+            <SelectItem key="collectivite" className="text-white data-[hover=true]:bg-white/10">
+              Collectivité / Institution
+            </SelectItem>
+          </Select>
+        </div>
+      </div>
+
+      <div>
+        <FieldLabel>Sujet</FieldLabel>
         <Select
-          label="Profil"
-          placeholder="Sélectionner…"
-          selectedKeys={form.type ? new Set([form.type]) : new Set()}
-          onSelectionChange={(keys) => update('type')(Array.from(keys)[0] as string ?? '')}
+          placeholder="Sélectionner un sujet…"
+          selectedKeys={form.subject ? new Set([form.subject]) : new Set()}
+          onSelectionChange={(keys) => update('subject')(Array.from(keys)[0] as string ?? '')}
           isRequired
           variant="bordered"
-          classNames={{
-            trigger: 'bg-white/[0.06] border-white/15 hover:border-white/25 rounded-xl h-12',
-            label: 'text-white/50 text-xs',
-            value: 'text-white',
-            popoverContent: 'bg-[#013a63] border border-white/10',
-          }}
+          classNames={selectClasses}
         >
-          <SelectItem key="professionnel" className="text-white data-[hover]:bg-white/10">
-            Professionnel
-          </SelectItem>
-          <SelectItem key="collectivite" className="text-white data-[hover]:bg-white/10">
-            Collectivité / Institution
-          </SelectItem>
+          {SUBJECTS.map((s) => (
+            <SelectItem key={s} className="text-white data-[hover=true]:bg-white/10">
+              {s}
+            </SelectItem>
+          ))}
         </Select>
       </div>
 
-      {/* Sujet */}
-      <Select
-        label="Sujet"
-        placeholder="Sélectionner un sujet…"
-        selectedKeys={form.subject ? new Set([form.subject]) : new Set()}
-        onSelectionChange={(keys) => update('subject')(Array.from(keys)[0] as string ?? '')}
-        isRequired
-        variant="bordered"
-        classNames={{
-          trigger: 'bg-white/[0.06] border-white/15 hover:border-white/25 rounded-xl h-12',
-          label: 'text-white/50 text-xs',
-          value: 'text-white',
-          popoverContent: 'bg-[#013a63] border border-white/10',
-        }}
-      >
-        {SUBJECTS.map((s) => (
-          <SelectItem key={s} className="text-white data-[hover]:bg-white/10">
-            {s}
-          </SelectItem>
-        ))}
-      </Select>
-
-      {/* Message */}
-      <Textarea
-        label="Message"
-        placeholder="Décrivez votre projet ou votre besoin…"
-        value={form.message}
-        onValueChange={update('message')}
-        isRequired
-        minRows={4}
-        variant="bordered"
-        classNames={{
-          inputWrapper: 'bg-white/[0.06] border-white/15 hover:border-white/25 focus-within:border-[#2ed6b0]/50 rounded-xl',
-          label: 'text-white/50 text-xs',
-          input: 'text-white placeholder:text-white/25',
-        }}
-      />
+      <div>
+        <FieldLabel>Message</FieldLabel>
+        <Textarea
+          placeholder="Décrivez votre projet ou votre besoin…"
+          value={form.message}
+          onValueChange={update('message')}
+          isRequired
+          minRows={4}
+          variant="bordered"
+          classNames={{
+            inputWrapper: 'bg-white/[0.06] border-white/15 hover:border-white/25 focus-within:border-[#2ed6b0]/50 rounded-xl',
+            input: 'text-white placeholder:text-white/25',
+          }}
+        />
+      </div>
 
       {status === 'error' && (
         <p className="text-red-400 text-sm">{errorMsg}</p>
@@ -188,6 +189,12 @@ export function ContactForm() {
 
 const inputClasses = {
   inputWrapper: 'bg-white/[0.06] border-white/15 hover:border-white/25 focus-within:border-[#2ed6b0]/50 rounded-xl h-12',
-  label: 'text-white/50 text-xs',
   input: 'text-white placeholder:text-white/25',
+}
+
+const selectClasses = {
+  trigger: 'bg-white/[0.06] border-white/15 hover:border-white/25 rounded-xl h-12',
+  value: 'text-white',
+  selectorIcon: 'text-white/50',
+  popoverContent: 'bg-[#013a63] border border-white/10',
 }

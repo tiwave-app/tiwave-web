@@ -1,38 +1,24 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
 
 export function SendWelcomeButton({ count }: { count: number }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
   const [result, setResult] = useState<{ sent: number; failed: number } | null>(null)
   const [confirmOpen, setConfirmOpen] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
   async function send() {
     setConfirmOpen(false)
     setStatus('sending')
     try {
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      )
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) throw new Error('Non authentifié')
-
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/process-onboarding`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`,
-        },
-        body: JSON.stringify({ mode: 'batch-welcome' }),
-      })
+      const res = await fetch('/api/admin/batch-welcome', { method: 'POST' })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error)
+      if (!res.ok) throw new Error(data.error ?? 'Erreur inconnue')
       setResult(data)
       setStatus('done')
-    } catch (err) {
-      console.error(err)
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : 'Erreur inconnue')
       setStatus('error')
     }
   }
@@ -55,6 +41,10 @@ export function SendWelcomeButton({ count }: { count: number }) {
       >
         {status === 'sending' ? 'Envoi…' : `Envoyer email 1 aux ${count} abonnés`}
       </button>
+
+      {status === 'error' && (
+        <p className="text-sm text-red-600 mt-1">{errorMsg}</p>
+      )}
 
       {confirmOpen && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
@@ -80,10 +70,6 @@ export function SendWelcomeButton({ count }: { count: number }) {
             </div>
           </div>
         </div>
-      )}
-
-      {status === 'error' && (
-        <p className="text-sm text-red-600">Erreur lors de l'envoi.</p>
       )}
     </>
   )

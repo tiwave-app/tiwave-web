@@ -10,8 +10,11 @@ function escapeHtml(str: string) {
     .replace(/"/g, '&quot;')
 }
 
+const LOGO_ROUND = `<img src="/logo-round-email.png" alt="" style="width:18px;height:18px;border-radius:50%;vertical-align:middle;margin-right:6px;display:inline-block;" />`
+
 function applyInlineStyles(escaped: string) {
   return escaped
+    .replace(/\[logo\]/g, LOGO_ROUND)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
 }
@@ -24,6 +27,12 @@ function bodyToHtml(text: string): string {
       if (!trimmed) return ''
       if (trimmed === '---') {
         return `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:8px 0 28px;"><tr><td style="border-top:2px solid #2ed6b0;opacity:0.35;font-size:0;">&nbsp;</td></tr></table>`
+      }
+      if (trimmed === '[hero-beach]') {
+        return `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px;"><tr><td><img src="/hero-beach-email.jpg" alt="Plage Martinique" style="display:block;width:100%;max-width:100%;height:200px;object-fit:cover;border-radius:10px;" /></td></tr></table>`
+      }
+      if (trimmed === '[intro-maria]') {
+        return `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px;"><tr><td style="vertical-align:top;padding-right:20px;font-size:15px;line-height:1.7;color:#1a1a1a;"><p style="margin:0 0 14px;">Moi, c'est <strong>Maria</strong> 👋</p><p style="margin:0 0 14px;">Je suis martiniquaise, et TiWave, c'est mon projet depuis juin 2025.</p><p style="margin:0 0 14px;">Je ne viens pas de la Silicon Valley.<br>Je viens d'ici.</p><p style="margin:0;">D'une île où l'eau est magnifique… mais où on ne sait jamais vraiment à quoi s'attendre avant d'arriver à la plage.</p></td><td width="160" style="vertical-align:top;padding-left:4px;"><img src="/maria-portrait-email.jpg" alt="Maria, fondatrice de TiWave" style="display:block;width:160px;border-radius:12px;border:0;" /></td></tr></table>`
       }
       const ctaLink = trimmed.match(/^→\s+\[(.+?)\]\((.+?)\)$/)
       if (ctaLink) {
@@ -48,13 +57,13 @@ function bodyToHtml(text: string): string {
 }
 
 function buildEmailHtml(subject: string, body: string): string {
-  return `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(subject)}</title></head><body style="margin:0;padding:20px 12px;background:#f4e9d8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;"><div style="max-width:560px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(1,58,99,0.08);"><div style="background:#013a63;padding:22px 32px;text-align:center;"><img src="https://tiwave.app/logo-name.svg" alt="TiWave" style="display:inline-block;height:38px;max-width:210px;" /></div><div style="padding:36px 32px 8px;color:#1a1a1a;font-size:15px;line-height:1.75;">${bodyToHtml(body)}</div><div style="padding:16px 32px 24px;border-top:1px solid #f0ece6;"><p style="margin:0;font-size:11px;color:#bbb;text-align:center;line-height:1.8;">Tu reçois cet email car tu t'es inscrit·e sur <span style="color:#0093d0;">tiwave.app</span> · <span style="color:#ccc;text-decoration:underline;">Se désinscrire</span></p></div></div></body></html>`
+  return `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(subject)}</title></head><body style="margin:0;padding:20px 12px;background:#f4e9d8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;"><div style="max-width:560px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(1,58,99,0.08);"><div style="background:#013a63;padding:20px 32px;"><img src="/logo-name.svg" alt="TiWave" style="display:block;height:28px;max-width:160px;" /></div><div style="padding:36px 32px 8px;color:#1a1a1a;font-size:15px;line-height:1.75;">${bodyToHtml(body)}</div><div style="padding:16px 32px 24px;border-top:1px solid #f0ece6;"><p style="margin:0;font-size:11px;color:#bbb;text-align:center;line-height:1.8;">Tu reçois cet email car tu t'es inscrit·e sur <span style="color:#0093d0;">tiwave.app</span> · <span style="color:#ccc;text-decoration:underline;">Se désinscrire</span></p></div></div></body></html>`
 }
 
 const EMAILS = [
   {
     num: 1,
-    timing: 'J+0 — à l\'inscription',
+    timing: "J+0 — à l'inscription",
     subject: 'Bienvenue dans TiWave',
     previewText: 'Une nouvelle façon de choisir ta plage arrive.',
     body: `Hello,
@@ -74,71 +83,81 @@ Une communauté locale
 Des infos utiles
 Et surtout… de meilleures baignades
 
+[hero-beach]
+
 Le projet avance vite, et tu fais maintenant partie des premiers à le suivre.
 Très bientôt, tu pourras tester l'app en avant-première.
 
 → [Nous suivre sur Instagram](https://www.instagram.com/tiwave.app)
 
 À très vite,
-**Maria**
+[logo] **Maria**
 *Fondatrice de Tiwave*`,
   },
   {
     num: 2,
     timing: 'J+3',
-    subject: '45 minutes de route. Pas de baignade possible.',
-    previewText: "Ce que j'ai trouvé aux Salines a tout changé.",
-    body: `Les Salines. Fin d'après-midi. Mes deux enfants dans les bras.
+    subject: 'Derrière TiWave, il y a une Martiniquaise',
+    previewText: 'Pas une grande boîte tech. Une femme, une idée, une île.',
+    body: `Hello,
 
-Quarante-cinq minutes de route pour leur montrer la plage de mon enfance — là où j'avais campé, pêché les ciriques, regardé les tortues pondre à l'aube. Je leur en parlais depuis des mois comme d'un endroit qui leur appartenait déjà.
+Je voulais me présenter, maintenant que tu fais partie de l'aventure.
 
-On n'a pas pu entrer dans l'eau. Les sargasses avaient tout pris.
+[intro-maria]
 
-Sur le chemin du retour, j'ai cherché sur mon téléphone. Rien d'utile. Un post Facebook de trois jours, une météo générique, quelques commentaires contradictoires. Pour une île dont l'identité repose sur ses plages, c'était vertigineux.
+Et ça, ça m'a toujours frustrée.
 
----
+Alors j'ai décidé de développer TiWave.
+Une app simple, utile, locale.
 
-Je suis ingénieure mobile. Treize ans à Paris, des dizaines d'applications pour des startups et des grandes entreprises. En 2024, j'ai choisi de rentrer. Avec ma famille. Avec l'idée que ce que je sais faire pouvait servir ici.
+Depuis, le projet a grandi :
 
-J'ai construit ce qui manquait.
+• sélectionné au **Prix Mitan Tjè — Fanm Dijital 5**
+• accompagné par la pépinière du **Technopole CACEM**
 
-→ [Découvrir tiwave.app](https://tiwave.app)
+C'est une belle reconnaissance.
+Mais le plus important reste à venir :
+les premières personnes qui vont suivre, comprendre, et utiliser TiWave.
 
-À très bientôt,
-**Maria**
-*Fondatrice de Tiwave*`,
+En attendant le lancement, je partage les coulisses du projet sur le blog
+
+→ [Lire le blog TiWave](https://tiwave.app/blog)
+
+À très vite,
+[logo] **Maria**
+*Fondatrice de TiWave*`,
   },
   {
     num: 3,
     timing: 'J+7',
-    subject: 'Les sargasses arrivent. Voilà comment on les surveille.',
-    previewText: 'Chaque matin, Tiwave scrute les données satellites pour tes plages.',
-    body: `Hey,
+    subject: 'Ce qui arrive sur Tiwave (et tu peux en faire partie)',
+    previewText: "J'ouvre bientôt les accès — tu peux en faire partie",
+    body: `Hello,
 
-Tu le sais — avec mai, la saison des sargasses redémarre.
+On y est presque.
 
-Chaque année, c'est la même histoire : tu arrives à la plage, et là… l'odeur. Les algues entassées sur le sable. Personne ne t'a prévenu·e.
+Après des mois de travail, TiWave est en train de prendre vie.
 
-Chez Tiwave, on a décidé que ça ne devrait plus arriver.
+[hero-beach]
 
----
+L'objectif est simple :
+t'aider à savoir où aller à la plage, au bon moment.
 
-**Comment on surveille les sargasses pour toi :**
+Mais avant le lancement officiel,
+j'ai besoin de quelques personnes pour tester l'app en conditions réelles.
 
-Chaque jour, nos systèmes analysent les données satellites de la NOAA pour détecter les concentrations de sargasses autour de la Martinique, croisées avec les rapports de la communauté.
+• détecter les bugs
+• donner un premier ressenti
+• aider à améliorer l'expérience
 
-Résultat : une carte mise à jour quotidiennement, avec 4 niveaux clairs :
+Et j'aimerais que tu en fasses partie.
+Les places seront limitées.
 
-• 🟢 Faible — RAS, bonne baignade
-• 🟡 Modéré — présence visible mais tolérable
-• 🟠 Élevé — gêne certaine
-• 🔴 Critique — plage fortement impactée
+→ [Rejoindre les beta testeurs](https://tiwave.app/beta)
 
-→ [Voir la carte sargasses en temps réel](https://tiwave.app)
-
-Bonne saison,
-**Maria**
-*Fondatrice de Tiwave*`,
+À très vite,
+[logo] **Maria**
+*Fondatrice de TiWave*`,
   },
 ]
 
@@ -153,7 +172,7 @@ export default function OnboardingPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-[#013a63]">Séquence onboarding</h1>
-          <p className="text-sm text-gray-500 mt-1">3 emails envoyés automatiquement après l'inscription</p>
+          <p className="text-sm text-gray-500 mt-1">3 emails envoyés automatiquement après l&apos;inscription</p>
         </div>
       </div>
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const LINKS = {
   website: 'https://tiwave.app',
-  instagram: 'https://instagram.com/tiwave',
+  instagram: 'https://instagram.com/tiwave.app',
   linkedin: 'https://www.linkedin.com/company/tiwave',
   email: 'mailto:maria@tiwave.app',
   notify: 'https://tiwave.app/#newsletter',
@@ -58,7 +58,7 @@ export default function Links() {
           <LinkButton
             href={LINKS.instagram}
             icon={<Instagram className="w-5 h-5" />}
-            label="Instagram @tiwave"
+            label="Instagram @tiwave.app"
           />
           <LinkButton
             href={LINKS.linkedin}
@@ -73,7 +73,7 @@ export default function Links() {
         </section>
 
         <section className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-5 text-center">
-          <div className="text-[#ff6d5a] text-xs font-semibold uppercase tracking-wider mb-1">
+          <div className="text-[#2ed6b0] text-xs font-semibold uppercase tracking-wider mb-1">
             Pro du tourisme ?
           </div>
           <h2 className="text-white text-lg font-semibold mb-3 leading-tight">

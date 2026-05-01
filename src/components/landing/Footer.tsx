@@ -13,6 +13,7 @@ const projectLinks = [
 const legalLinks = [
   { href: '/mentions-legales', label: 'Mentions légales' },
   { href: '/confidentialite', label: 'Politique de confidentialité' },
+  { href: '/cgu', label: "Conditions d'utilisation" },
   { href: '#newsletter', label: 'Newsletter' },
 ]
 

@@ -66,8 +66,13 @@ function Footer() {
             <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
           </div>
         </div>
-        <div className="border-t border-white/10 mt-8 pt-6 text-center text-white/40 text-sm">
-          © 2026 Tiwave — Tous droits réservés
+        <div className="border-t border-white/10 mt-8 pt-6 flex flex-col sm:flex-row gap-3 sm:gap-6 items-center justify-between text-sm text-white/40">
+          <p>© 2026 Tiwave — Tous droits réservés</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+            <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link>
+            <Link href="/confidentialite" className="hover:text-white transition-colors">Confidentialité</Link>
+            <Link href="/cgu" className="hover:text-white transition-colors">CGU</Link>
+          </div>
         </div>
       </div>
     </footer>

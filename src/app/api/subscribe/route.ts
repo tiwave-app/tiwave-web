@@ -32,26 +32,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Erreur serveur.' }, { status: 500 })
     }
 
-    // Welcome email — must be awaited on Vercel serverless, otherwise the
-    // outbound fetch gets killed when the function returns. We don't fail the
-    // subscription if Resend errors, but we do log the failure.
-    try {
-      const res = await fetch(`${supabaseUrl}/functions/v1/process-onboarding`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabaseKey}`,
-        },
-        body: JSON.stringify({ mode: 'welcome', email: email.toLowerCase().trim() }),
-      })
-      if (!res.ok) {
-        const body = await res.text().catch(() => '')
-        console.error('process-onboarding welcome failed:', res.status, body)
-      }
-    } catch (err) {
-      console.error('process-onboarding welcome network error:', err)
-    }
-
+    // Welcome email is fired by the Postgres trigger `newsletter_welcome_webhook`
+    // (migration 20260508_newsletter_welcome_webhook.sql) which calls the
+    // process-onboarding edge function via pg_net asynchronously.
     return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Subscribe route unexpected error:', err)

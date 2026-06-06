@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://tiwave.app/confidentialite' },
 }
 
-const LAST_UPDATE = '1er mai 2026'
+const LAST_UPDATE = '6 juin 2026'
 
 export default function Confidentialite() {
   return (
@@ -79,10 +79,17 @@ export default function Confidentialite() {
         <h3>2.3. Contenus que vous publiez</h3>
         <ul>
           <li>Rapports de plage (conditions, sargasses, fréquentation, observations)</li>
-          <li>Photos</li>
+          <li>Photos (stockées sur Supabase Storage, Union européenne)</li>
           <li>Commentaires et interactions</li>
         </ul>
         <p>Ces contenus peuvent être visibles par les autres utilisateurs de l’application.</p>
+        <p>
+          Le contenu publié par les utilisateurs est modéré : chacun peut{' '}
+          <strong>signaler</strong> un contenu inapproprié ou{' '}
+          <strong>bloquer</strong> un utilisateur. Tout contenu signalé est examiné
+          et peut être retiré sous 24&nbsp;heures. Les contenus offensants, faux ou
+          illégaux sont interdits (tolérance zéro).
+        </p>
 
         <hr />
 
@@ -227,7 +234,10 @@ export default function Confidentialite() {
         <h2>8. Suppression de votre compte</h2>
         <p>Vous pouvez supprimer votre compte :</p>
         <ul>
-          <li>depuis les paramètres de l’application</li>
+          <li>
+            depuis l’application (onglet <strong>Profil</strong> →{' '}
+            <strong>Supprimer mon compte</strong>) — suppression immédiate
+          </li>
           <li>
             ou en écrivant à{' '}
             <a href="mailto:contact@tiwave.app">contact@tiwave.app</a>
@@ -235,10 +245,24 @@ export default function Confidentialite() {
         </ul>
         <p>La suppression entraîne :</p>
         <ul>
-          <li>la suppression de vos données personnelles</li>
-          <li>la suppression ou anonymisation de vos contenus</li>
+          <li>
+            la suppression de vos données personnelles (profil, observations,
+            photos de vos observations, favoris, notifications, jetons push,
+            «&nbsp;j’aime&nbsp;», signalements et blocages)
+          </li>
+          <li>
+            l’anonymisation des photos contribuées à la galerie d’une plage
+            (contenu communautaire partagé), sans lien avec votre identité
+          </li>
         </ul>
-        <p>Délai maximum : 30 jours.</p>
+        <p>Délai maximum (demande par email) : 30 jours.</p>
+        <p>
+          Procédure détaillée :{' '}
+          <a href="https://tiwave.app/suppression-compte">
+            tiwave.app/suppression-compte
+          </a>
+          .
+        </p>
 
         <hr />
 

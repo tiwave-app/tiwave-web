@@ -100,7 +100,7 @@ export default function Confidentialite() {
         </ul>
         <p>Uniquement si vous avez accepté de recevoir des notifications.</p>
         <p>
-          Vous pouvez les désactiver à tout moment dans l’application (Profil → Notifications) ou
+          Vous pouvez les désactiver à tout moment dans l’application (Profil → Réglages) ou
           depuis les réglages de votre appareil.
         </p>
 
@@ -178,11 +178,11 @@ export default function Confidentialite() {
         </table>
         <p>Vous pouvez retirer votre consentement à tout moment :</p>
         <ul>
-          <li>notifications : dans l’application (Profil → Notifications) ou les réglages de votre appareil</li>
+          <li>notifications : dans l’application (Profil → Réglages) ou les réglages de votre appareil</li>
           <li>
             emails : par le lien « Se désinscrire » en bas de chaque message, sur{' '}
             <a href="https://tiwave.app/unsubscribe">tiwave.app/unsubscribe</a>, ou dans
-            l’application (Profil → Mails TiWave)
+            l’application (Profil → Réglages)
           </li>
         </ul>
 

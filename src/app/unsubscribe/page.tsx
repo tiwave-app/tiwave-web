@@ -35,7 +35,7 @@ export default async function UnsubscribePage({
         {!token && (
           <p className="text-white/30 text-sm mt-8 leading-relaxed">
             Vous avez un compte dans l&apos;application ? Le réglage se trouve dans
-            Profil → Mails TiWave.
+            Profil → Réglages.
           </p>
         )}
 

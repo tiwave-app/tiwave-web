@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://tiwave.app/confidentialite' },
 }
 
-const LAST_UPDATE = '6 juin 2026'
+const LAST_UPDATE = '3 octobre 2026'
 
 export default function Confidentialite() {
   return (
@@ -99,6 +99,10 @@ export default function Confidentialite() {
           <li>Plateforme (iOS / Android)</li>
         </ul>
         <p>Uniquement si vous avez accepté de recevoir des notifications.</p>
+        <p>
+          Vous pouvez les désactiver à tout moment dans l’application (Profil → Notifications) ou
+          depuis les réglages de votre appareil.
+        </p>
 
         <hr />
 
@@ -116,6 +120,10 @@ export default function Confidentialite() {
         <h3>2.6. Formulaires et communications</h3>
         <ul>
           <li>Email (newsletter, programme bêta)</li>
+          <li>
+            Email de votre compte : un message de bienvenue à la création du compte, puis, seulement
+            si vous l’avez accepté, les nouvelles et conseils de TiWave
+          </li>
           <li>Nom, email et message (formulaire de contact)</li>
         </ul>
 
@@ -151,6 +159,14 @@ export default function Confidentialite() {
               <td>Consentement</td>
             </tr>
             <tr>
+              <td>Email de bienvenue à la création du compte</td>
+              <td>Exécution du contrat</td>
+            </tr>
+            <tr>
+              <td>Nouvelles et conseils par email (comptes de l’application)</td>
+              <td>Consentement</td>
+            </tr>
+            <tr>
               <td>Sécurité et prévention de la fraude</td>
               <td>Intérêt légitime</td>
             </tr>
@@ -160,7 +176,15 @@ export default function Confidentialite() {
             </tr>
           </tbody>
         </table>
-        <p>Vous pouvez retirer votre consentement à tout moment.</p>
+        <p>Vous pouvez retirer votre consentement à tout moment :</p>
+        <ul>
+          <li>notifications : dans l’application (Profil → Notifications) ou les réglages de votre appareil</li>
+          <li>
+            emails : par le lien « Se désinscrire » en bas de chaque message, sur{' '}
+            <a href="https://tiwave.app/unsubscribe">tiwave.app/unsubscribe</a>, ou dans
+            l’application (Profil → Mails TiWave)
+          </li>
+        </ul>
 
         <hr />
 
@@ -170,7 +194,8 @@ export default function Confidentialite() {
           <li>Suppression du compte : effective sous 30 jours</li>
           <li>Contenus publiés : supprimés ou anonymisés lors de la suppression du compte</li>
           <li>Logs techniques : 12 mois maximum</li>
-          <li>Newsletter : jusqu’à votre désabonnement</li>
+          <li>Newsletter : jusqu’à votre désabonnement, votre adresse est alors supprimée</li>
+          <li>Accord pour les emails de l’application : jusqu’à son retrait ou la suppression du compte</li>
         </ul>
 
         <hr />

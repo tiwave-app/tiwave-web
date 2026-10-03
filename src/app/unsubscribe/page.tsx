@@ -7,7 +7,14 @@ export const metadata = {
   robots: { index: false },
 }
 
-export default function UnsubscribePage() {
+export default async function UnsubscribePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ t?: string }>
+}) {
+  // Présent quand on arrive depuis un mail envoyé à un compte de l'app.
+  const { t: token } = await searchParams
+
   return (
     <main
       className="min-h-screen flex items-center py-24"
@@ -18,15 +25,19 @@ export default function UnsubscribePage() {
           Se désinscrire des mails TiWave
         </h1>
         <p className="text-white/50 text-lg mb-8 leading-relaxed">
-          Indiquez l&apos;adresse qui reçoit nos mails. Elle sera supprimée de notre liste.
+          {token
+            ? 'Confirmez pour ne plus recevoir les nouvelles de TiWave par mail. Votre compte et vos notifications ne changent pas.'
+            : 'Indiquez l’adresse qui reçoit nos mails. Elle sera supprimée de notre liste.'}
         </p>
 
-        <UnsubscribeForm />
+        <UnsubscribeForm token={token} />
 
-        <p className="text-white/30 text-sm mt-8 leading-relaxed">
-          Vous avez un compte dans l&apos;application ? Le réglage se trouve dans
-          Profil → Mails TiWave.
-        </p>
+        {!token && (
+          <p className="text-white/30 text-sm mt-8 leading-relaxed">
+            Vous avez un compte dans l&apos;application ? Le réglage se trouve dans
+            Profil → Mails TiWave.
+          </p>
+        )}
 
         <Link href="/" className="inline-block text-[#2ed6b0] text-sm mt-6 hover:underline">
           ← Retour à tiwave.app

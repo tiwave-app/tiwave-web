@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Input, Button } from '@heroui/react'
 import { Check } from 'lucide-react'
 
-export function UnsubscribeForm() {
+export function UnsubscribeForm({ token }: { token?: string }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
@@ -17,7 +17,7 @@ export function UnsubscribeForm() {
       const res = await fetch('/api/unsubscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify(token ? { token } : { email }),
       })
 
       if (res.ok) {
@@ -41,8 +41,9 @@ export function UnsubscribeForm() {
         </div>
         <p className="text-white font-semibold text-lg mb-2">C&apos;est fait.</p>
         <p className="text-white/50 text-sm leading-relaxed">
-          Si cette adresse était inscrite, elle est supprimée de notre liste et ne recevra plus
-          nos mails.
+          {token
+            ? 'Vous ne recevrez plus les nouvelles de TiWave par mail.'
+            : 'Si cette adresse était inscrite, elle est supprimée de notre liste et ne recevra plus nos mails.'}
         </p>
       </div>
     )
@@ -51,7 +52,7 @@ export function UnsubscribeForm() {
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-        <Input
+        {!token && <Input
           type="email"
           aria-label="Votre adresse email"
           placeholder="votre@email.com"
@@ -65,13 +66,13 @@ export function UnsubscribeForm() {
               'bg-white/[0.06] border-white/15 hover:border-white/25 focus-within:border-[#2ed6b0]/50 rounded-xl h-12',
             input: 'text-white placeholder:text-white/25',
           }}
-        />
+        />}
         <Button
           type="submit"
           isLoading={status === 'loading'}
           className="bg-white/10 text-white font-semibold px-7 rounded-xl h-12 shrink-0 border border-white/15"
         >
-          Me désinscrire
+          {token ? 'Confirmer la désinscription' : 'Me désinscrire'}
         </Button>
       </form>
 

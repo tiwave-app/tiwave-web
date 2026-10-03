@@ -1,12 +1,25 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json()
+    // Deux entrées :
+    // - un jeton (?t=…), porté par les mails envoyés aux comptes de l'app. Les
+    //   clients mail l'appellent directement pour la désinscription en un clic
+    //   (RFC 8058), avec un corps de formulaire et non du JSON ;
+    // - une adresse, saisie sur la page par un inscrit de la newsletter.
+    const jetonUrl = new URL(request.url).searchParams.get('t')
+    const body = jetonUrl ? {} : await request.json()
+    const jeton = jetonUrl ?? body.token
     const { email } = body
 
-    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (jeton !== undefined && jeton !== null) {
+      if (typeof jeton !== 'string' || !UUID.test(jeton)) {
+        return NextResponse.json({ error: 'Lien invalide.' }, { status: 400 })
+      }
+    } else if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: 'Email invalide.' }, { status: 400 })
     }
 
@@ -20,11 +33,13 @@ export async function POST(request: Request) {
 
     const supabase = createClient(supabaseUrl, supabaseKey)
 
-    // La fonction SQL répond pareil que l'adresse soit inscrite ou non : on ne
-    // révèle pas qui est abonné.
-    const { error } = await supabase.rpc('unsubscribe_newsletter', {
-      p_email: email.toLowerCase().trim(),
-    })
+    // Les fonctions SQL répondent pareil que l'adresse ou le jeton existe ou
+    // non : on ne révèle pas qui est abonné.
+    const { error } = jeton
+      ? await supabase.rpc('unsubscribe_app_mails', { p_token: jeton })
+      : await supabase.rpc('unsubscribe_newsletter', {
+          p_email: email.toLowerCase().trim(),
+        })
 
     if (error) {
       console.error('Newsletter unsubscribe error:', JSON.stringify(error))

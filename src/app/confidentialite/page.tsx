@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://tiwave.app/confidentialite' },
 }
 
-const LAST_UPDATE = '3 octobre 2026'
+const LAST_UPDATE = '11 octobre 2026'
 
 export default function Confidentialite() {
   return (
@@ -112,6 +112,7 @@ export default function Confidentialite() {
           <li>Logs de connexion</li>
           <li>Type d’appareil</li>
           <li>Version de l’application</li>
+          <li>Rapports d’erreurs et mesures de performance de l’application</li>
         </ul>
         <p>Ces données sont utilisées à des fins de sécurité, de maintenance et de diagnostic.</p>
 
@@ -209,6 +210,7 @@ export default function Confidentialite() {
           <li>Google (Maps SDK, Firebase Cloud Messaging) : cartographie et notifications Android (États-Unis)</li>
           <li>Vercel : hébergement du site web et du panneau d’administration (États-Unis)</li>
           <li>Resend : envoi des emails (États-Unis / Union européenne)</li>
+          <li>Sentry : rapports d’erreurs et mesures de performance de l’application (Union européenne)</li>
         </ul>
         <p>Ces prestataires agissent en tant que sous-traitants au sens du RGPD.</p>
 

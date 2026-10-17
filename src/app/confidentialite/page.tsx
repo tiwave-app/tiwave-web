@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://tiwave.app/confidentialite' },
 }
 
-const LAST_UPDATE = '11 octobre 2026'
+const LAST_UPDATE = '17 octobre 2026'
 
 export default function Confidentialite() {
   return (
@@ -115,6 +115,13 @@ export default function Confidentialite() {
           <li>Rapports d’erreurs et mesures de performance de l’application</li>
         </ul>
         <p>Ces données sont utilisées à des fins de sécurité, de maintenance et de diagnostic.</p>
+        <p>
+          Mesure d’audience de l’application : nous comptons les écrans ouverts et quelques actions
+          (plage consultée, favori ajouté, observation publiée) pour savoir ce qui sert et améliorer
+          TiWave. Ces statistiques sont rattachées à un identifiant aléatoire propre à l’appareil, sans
+          lien avec votre compte, sans adresse IP ni identifiant publicitaire. Vous pouvez la désactiver
+          dans l’application (Profil → Réglages → Mesure d’audience).
+        </p>
 
         <hr />
 
@@ -180,6 +187,7 @@ export default function Confidentialite() {
         <p>Vous pouvez retirer votre consentement à tout moment :</p>
         <ul>
           <li>notifications : dans l’application (Profil → Réglages) ou les réglages de votre appareil</li>
+          <li>mesure d’audience : dans l’application (Profil → Réglages)</li>
           <li>
             emails : par le lien « Se désinscrire » en bas de chaque message, sur{' '}
             <a href="https://tiwave.app/unsubscribe">tiwave.app/unsubscribe</a>, ou dans
@@ -195,6 +203,7 @@ export default function Confidentialite() {
           <li>Suppression du compte : effective sous 30 jours</li>
           <li>Contenus publiés : supprimés ou anonymisés lors de la suppression du compte</li>
           <li>Logs techniques : 12 mois maximum</li>
+          <li>Statistiques de mesure d’audience : 25 mois maximum</li>
           <li>Newsletter : jusqu’à votre désabonnement, votre adresse est alors supprimée</li>
           <li>Accord pour les emails de l’application : jusqu’à son retrait ou la suppression du compte</li>
         </ul>
@@ -211,6 +220,7 @@ export default function Confidentialite() {
           <li>Vercel : hébergement du site web et du panneau d’administration (États-Unis)</li>
           <li>Resend : envoi des emails (États-Unis / Union européenne)</li>
           <li>Sentry : rapports d’erreurs et mesures de performance de l’application (Union européenne)</li>
+          <li>Amplitude : mesure d’audience de l’application (Union européenne)</li>
         </ul>
         <p>Ces prestataires agissent en tant que sous-traitants au sens du RGPD.</p>
 

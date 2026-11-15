@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Bug, MessageCircle, Sparkles } from 'lucide-react'
 
 export default function BetaPage() {
@@ -12,6 +12,12 @@ export default function BetaPage() {
   const [acceptsCitation, setAcceptsCitation] = useState(false)
   const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error' | 'duplicate'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+
+  // tiwave.app/telecharger envoie les téléphones Android ici avec ?appareil=android.
+  useEffect(() => {
+    const appareil = new URLSearchParams(window.location.search).get('appareil')
+    if (appareil === 'android' || appareil === 'ios') setOs(appareil)
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -56,7 +62,7 @@ export default function BetaPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-[#2ed6b0]/10 border border-[#2ed6b0]/25 rounded-full px-4 py-1.5 text-xs text-[#2ed6b0] font-medium mb-6 tracking-wide">
-              Programme beta — places limitées
+              Testeurs Android — 20 places
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-5 leading-[1.1]">
               Teste TiWave
@@ -69,12 +75,12 @@ export default function BetaPage() {
                   backgroundClip: 'text',
                 }}
               >
-                en avant-première
+                sur Android
               </span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed">
-              L&apos;app est presque prête. Rejoins les premiers testeurs et aide à
-              façonner l&apos;expérience avant le lancement officiel.
+              TiWave est déjà sur l&apos;App Store. Sur Android, l&apos;app s&apos;ouvre à
+              tous après 14 jours de test&nbsp;: rejoins les premiers testeurs.
             </p>
           </div>
 
@@ -105,7 +111,8 @@ export default function BetaPage() {
               <div className="text-center py-6">
                 <h2 className="text-white font-bold text-xl mb-3">Inscription confirmée</h2>
                 <p className="text-white/50 text-sm leading-relaxed">
-                  Tu es sur la liste. Je te contacte dès que les accès beta sont ouverts.
+                  Tu es sur la liste. Je t&apos;envoie le lien de test par email très vite,
+                  à l&apos;adresse de ton compte Google Play.
                 </p>
                 <p className="text-white/30 text-xs mt-6">— Maria, fondatrice de TiWave</p>
               </div>
@@ -159,6 +166,18 @@ export default function BetaPage() {
                         </button>
                       ))}
                     </div>
+                    {os === 'ios' && (
+                      <p className="text-white/50 text-xs mt-3 leading-relaxed">
+                        Sur iPhone, pas besoin d&apos;attendre&nbsp;: TiWave est déjà{' '}
+                        <a
+                          href="https://apps.apple.com/app/id6767921828"
+                          className="text-[#2ed6b0] hover:underline"
+                        >
+                          disponible sur l&apos;App Store
+                        </a>
+                        .
+                      </p>
+                    )}
                   </div>
 
                   {/* Email */}

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Apple, Bell, Download, Instagram, Linkedin, Mail, Globe, Calendar } from 'lucide-react'
+import { Instagram, Linkedin, Mail, Globe, Calendar, Smartphone } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'TiWave · Tous nos liens',
-  description: 'L\'app arrive bientôt — soyez notifié du lancement',
+  description: 'TiWave est sur l\'App Store — testeurs Android recherchés',
 }
 
 const LINKS = {
@@ -12,7 +12,8 @@ const LINKS = {
   instagram: 'https://instagram.com/tiwave.app',
   linkedin: 'https://www.linkedin.com/company/tiwave',
   email: 'mailto:maria@tiwave.app',
-  notify: 'https://tiwave.app/#newsletter',
+  appStore: 'https://apps.apple.com/app/id6767921828',
+  betaAndroid: '/beta?appareil=android',
 }
 
 export default function Links() {
@@ -21,7 +22,7 @@ export default function Links() {
       <div className="w-full max-w-md">
         <header className="flex flex-col items-center text-center mb-8">
           <div className="text-3xl font-bold text-white mb-2">
-            Tiwave<span className="text-[#2ed6b0]">.</span>
+            TiWave<span className="text-[#2ed6b0]">.</span>
           </div>
           <p className="text-white/70 text-xs uppercase tracking-wider">
             Santé des plages · Temps réel · Martinique
@@ -30,22 +31,23 @@ export default function Links() {
 
         <section className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-5 mb-6 text-center">
           <div className="text-[#2ed6b0] text-xs font-semibold uppercase tracking-wider mb-2">
-            Soumission en cours
+            Disponible
           </div>
-          <h2 className="text-white text-base font-semibold mb-3 leading-tight">
-            L'app arrive bientôt sur les stores
+          <h2 className="text-white text-base font-semibold mb-4 leading-tight">
+            La bonne plage, aujourd&apos;hui.
           </h2>
-          <div className="flex gap-2 justify-center mb-4">
-            <ComingSoonBadge icon={<Apple className="w-4 h-4" />} label="App Store" />
-            <ComingSoonBadge icon={<Download className="w-4 h-4" />} label="Google Play" />
-          </div>
-          <a
-            href={LINKS.notify}
+          <a href={LINKS.appStore} target="_blank" rel="noopener noreferrer" className="inline-block mb-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/badge-app-store-fr.svg" alt="Télécharger dans l'App Store" className="h-12" />
+          </a>
+          <p className="text-white/70 text-xs mb-3">Sur Android&nbsp;? L&apos;app arrive, deviens testeur.</p>
+          <Link
+            href={LINKS.betaAndroid}
             className="inline-flex items-center gap-2 bg-[#2ed6b0] text-[#013a63] px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
           >
-            <Bell className="w-4 h-4" />
-            Être notifié du lancement
-          </a>
+            <Smartphone className="w-4 h-4" />
+            Devenir testeur Android
+          </Link>
         </section>
 
         <section className="space-y-3 mb-6">
@@ -118,14 +120,5 @@ function LinkButton({
       <span className={primary ? 'text-[#0093d0]' : 'text-[#2ed6b0]'}>{icon}</span>
       <span className="flex-1 text-sm">{label}</span>
     </a>
-  )
-}
-
-function ComingSoonBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <div className="flex items-center gap-1.5 bg-black/30 border border-white/20 rounded-full px-3 py-1.5 text-white/80 text-xs font-medium">
-      <span className="text-white/60">{icon}</span>
-      <span>{label}</span>
-    </div>
   )
 }

@@ -38,7 +38,13 @@ function layout(content: string): string {
     <div style="background:#ffffff;border-radius:20px;padding:28px 26px;font-size:16px;line-height:1.55">
       ${content}
     </div>
-    <p style="font-size:12px;color:#5b6b78;margin:20px 4px 0">TiWave · La bonne plage, aujourd'hui.</p>
+    <p style="font-size:13px;color:#5b6b78;margin:20px 4px 6px;text-align:center">
+      Suis TiWave&nbsp;:
+      <a href="https://www.instagram.com/tiwave.app" style="color:#0093d0;text-decoration:none;font-weight:600">Instagram</a> ·
+      <a href="https://www.tiktok.com/@tiwave.app" style="color:#0093d0;text-decoration:none;font-weight:600">TikTok</a> ·
+      <a href="https://www.facebook.com/tiwaveapp" style="color:#0093d0;text-decoration:none;font-weight:600">Facebook</a>
+    </p>
+    <p style="font-size:12px;color:#5b6b78;margin:0 4px;text-align:center">TiWave · La bonne plage, aujourd'hui.</p>
   </div>
 </body></html>`
 }

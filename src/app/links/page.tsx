@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { Instagram, Linkedin, Mail, Globe, Calendar, Smartphone } from 'lucide-react'
+import { Instagram, Facebook, Linkedin, Mail, Globe, Calendar, Smartphone } from 'lucide-react'
 import Link from 'next/link'
+import { TikTok } from '@/components/TikTokIcon'
 
 export const metadata: Metadata = {
   title: 'TiWave · Tous nos liens',
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
 const LINKS = {
   website: 'https://tiwave.app',
   instagram: 'https://instagram.com/tiwave.app',
+  tiktok: 'https://www.tiktok.com/@tiwave.app',
+  facebook: 'https://www.facebook.com/tiwaveapp',
   linkedin: 'https://www.linkedin.com/company/tiwave',
   email: 'mailto:maria@tiwave.app',
   appStore: 'https://apps.apple.com/app/id6767921828',
@@ -61,6 +64,16 @@ export default function Links() {
             href={LINKS.instagram}
             icon={<Instagram className="w-5 h-5" />}
             label="Instagram @tiwave.app"
+          />
+          <LinkButton
+            href={LINKS.tiktok}
+            icon={<TikTok className="w-5 h-5" />}
+            label="TikTok @tiwave.app"
+          />
+          <LinkButton
+            href={LINKS.facebook}
+            icon={<Facebook className="w-5 h-5" />}
+            label="Facebook TiWave"
           />
           <LinkButton
             href={LINKS.linkedin}

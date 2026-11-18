@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Divider } from '@heroui/react'
-import { Linkedin, Instagram, MessageCircle } from 'lucide-react'
+import { Linkedin, Instagram, Facebook, MessageCircle } from 'lucide-react'
+import { TikTok } from '@/components/TikTokIcon'
 
 const projectLinks = [
   { href: '#how-it-works', label: 'Comment ça marche' },
@@ -27,6 +28,16 @@ const socialLinks = [
     href: 'https://www.instagram.com/tiwave.app',
     label: 'Instagram',
     icon: Instagram,
+  },
+  {
+    href: 'https://www.tiktok.com/@tiwave.app',
+    label: 'TikTok',
+    icon: TikTok,
+  },
+  {
+    href: 'https://www.facebook.com/tiwaveapp',
+    label: 'Facebook',
+    icon: Facebook,
   },
   {
     href: 'https://chat.whatsapp.com/H2YiHQOO1dqFtSpCGdpiV7',

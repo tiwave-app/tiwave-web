@@ -13,6 +13,12 @@ export async function POST(request: Request) {
     if (!first_name || typeof first_name !== 'string' || !first_name.trim()) {
       return NextResponse.json({ error: 'Prénom requis.' }, { status: 400 })
     }
+    // Le prénom est repris dans l'e-mail envoyé à l'adresse saisie : on n'accepte
+    // qu'un vrai prénom (lettres, espaces, tirets, apostrophes), pour que le
+    // formulaire ne serve pas à envoyer un lien ou un message à un inconnu.
+    if (!/^[\p{L}][\p{L}\p{M} '’-]{0,39}$/u.test(first_name.trim())) {
+      return NextResponse.json({ error: 'Prénom invalide.' }, { status: 400 })
+    }
     if (!os_type || !['ios', 'android'].includes(os_type)) {
       return NextResponse.json({ error: "Type d'appareil requis." }, { status: 400 })
     }

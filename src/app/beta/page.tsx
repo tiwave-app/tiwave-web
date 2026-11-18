@@ -1,11 +1,28 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import Script from 'next/script'
+import { useEffect, useRef, useState } from 'react'
 import { Bug, MessageCircle, Sparkles } from 'lucide-react'
+
+// Case anti-robot Cloudflare Turnstile : affichée seulement si la clé publique
+// est configurée (NEXT_PUBLIC_TURNSTILE_SITE_KEY), sinon le piège invisible
+// (champ caché + temps de remplissage) protège seul le formulaire.
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+
+declare global {
+  interface Window {
+    onTurnstileOk?: (token: string) => void
+    onTurnstileExpired?: () => void
+    turnstile?: { reset: () => void }
+  }
+}
 
 export default function BetaPage() {
   const [firstName, setFirstName] = useState('')
+  const [website, setWebsite] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const startedAt = useRef(Date.now())
   const [os, setOs] = useState<'ios' | 'android' | ''>('')
   const [email, setEmail] = useState('')
   const [acceptsConditions, setAcceptsConditions] = useState(false)
@@ -17,6 +34,15 @@ export default function BetaPage() {
   useEffect(() => {
     const appareil = new URLSearchParams(window.location.search).get('appareil')
     if (appareil === 'android' || appareil === 'ios') setOs(appareil)
+  }, [])
+
+  useEffect(() => {
+    window.onTurnstileOk = (token) => setTurnstileToken(token)
+    window.onTurnstileExpired = () => setTurnstileToken('')
+    return () => {
+      delete window.onTurnstileOk
+      delete window.onTurnstileExpired
+    }
   }, [])
 
   async function handleSubmit(e: React.FormEvent) {
@@ -33,6 +59,9 @@ export default function BetaPage() {
           os_type: os,
           email,
           accepts_citation: acceptsCitation,
+          website,
+          elapsed_ms: Date.now() - startedAt.current,
+          turnstile_token: turnstileToken,
         }),
       })
       const data = await res.json()
@@ -42,6 +71,11 @@ export default function BetaPage() {
     } catch (err: unknown) {
       setErrorMsg(err instanceof Error ? err.message : 'Erreur inconnue')
       setStatus('error')
+      // Un jeton Turnstile ne sert qu'une fois : on en redemande un.
+      if (TURNSTILE_SITE_KEY) {
+        setTurnstileToken('')
+        window.turnstile?.reset()
+      }
     }
   }
 
@@ -274,13 +308,42 @@ export default function BetaPage() {
                     En soumettant ce formulaire, je certifie avoir 16 ans ou plus.
                   </p>
 
+                  {/* Piège à robots : invisible pour les humains, rempli par les robots */}
+                  <div aria-hidden className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                    <label>
+                      Site web
+                      <input
+                        type="text"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={website}
+                        onChange={(e) => setWebsite(e.target.value)}
+                      />
+                    </label>
+                  </div>
+
+                  {TURNSTILE_SITE_KEY && (
+                    <>
+                      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
+                      <div
+                        className="cf-turnstile"
+                        data-sitekey={TURNSTILE_SITE_KEY}
+                        data-callback="onTurnstileOk"
+                        data-expired-callback="onTurnstileExpired"
+                        data-theme="dark"
+                        data-language="fr"
+                      />
+                    </>
+                  )}
+
                   {status === 'error' && (
                     <p className="text-red-400 text-xs">{errorMsg}</p>
                   )}
 
                   <button
                     type="submit"
-                    disabled={status === 'loading' || !email || !firstName || !os || !acceptsConditions}
+                    disabled={status === 'loading' || !email || !firstName || !os || !acceptsConditions || (!!TURNSTILE_SITE_KEY && !turnstileToken)}
                     className="mt-1 bg-[#0093d0] text-white font-semibold py-3 rounded-xl hover:bg-[#007ab5] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                   >
                     {status === 'loading' ? 'Inscription en cours…' : 'Rejoindre le programme beta'}
